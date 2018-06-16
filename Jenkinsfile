@@ -9,8 +9,7 @@ pipeline{
         
         stage("Compile"){
             steps{
-                sh "cd registration-service"
-                sh "sh ./mvnw compile"
+                sh "cd registration-service && sh ./mvnw compile"                
             }
         }
         
