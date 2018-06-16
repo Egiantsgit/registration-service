@@ -33,15 +33,14 @@ public class UserController {
 		return new ResponseEntity<>(this.userService.getUsers(), HttpStatus.OK);
 	}
 
-
-  // swagger annotation
+	// swagger annotation
 	@ApiOperation(value = "search a user with email")
-	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<User> getUser(@PathVariable("emailId") String emailId) {
 
 		return new ResponseEntity<>(this.userService.getUser(emailId), HttpStatus.OK);
 	}
-
 
 	// swagger annotation
 	@ApiOperation(value = "Add a user")
@@ -55,23 +54,17 @@ public class UserController {
 		return new ResponseEntity<>(this.userService.createUser(user), HttpStatus.CREATED);
 	}
 
-
-	
-
 	// swagger annotation
 	@ApiOperation(value = "update a user")
-@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<User> updateUser(@PathVariable("emailId") String emailId, @RequestBody User user) {
 
 		// TODO: add MISMATCH identifier validation exception
 
-		return new ResponseEntity<>(this.userService.createOrUpdateUser(user), HttpStatus.CREATED);
+		return new ResponseEntity<>(this.userService.updateUser(user), HttpStatus.CREATED);
 	}
-
-  
-	
 
 	// swagger annotation
 	@ApiOperation(value = "delete a user")
@@ -79,8 +72,6 @@ public class UserController {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 
 	public ResponseEntity<Void> deleteUser(@PathVariable("emailId") String emailId) {
-
-		System.out.println(emailId);
 
 		this.userService.deleteUser(emailId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

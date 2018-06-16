@@ -33,27 +33,18 @@ public class SpringDataUserDaoImpl implements UserDao {
 
 	@Override
 	public User createUser(User user) {
-		if (!userRepository.exists(user.getEmailId())) {
 
 			Date newDate = new Date();
 
 			user.setCreatedDate(newDate);
 			user.setLastModifiedDate(newDate);
 			return this.userRepository.save(user);
-		} else {
-			return customUpdate(user);
-		}
-
 	}
 
 	@Override
-	public User createOrUpdateUser(User user) {
+	public User updateUser(User user) {
 
-		if (userRepository.exists(user.getEmailId())) {
-			return customUpdate(user);
-		} else {
-			return createUser(user);
-		}
+		return customUpdate(user);
 
 	}
 
