@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("checkout"){
             steps{
-                git url:'https://github.com/mahesh-shrestainfotech/springboot.git'
+                git url:'https://github.com/Egiantsgit/registration-service.git'
             }
         }
         
@@ -30,8 +30,8 @@ pipeline{
         stage("Docker build"){
         	steps{
         	    sh "docker login --username egiantsdocker --password Egaints#1"        	
-        		sh "docker build -t egiantsdocker/springboot ."
-        		sh "docker push egiantsdocker/springboot"
+        		sh "docker build -t egiantsdocker/registrationservice ."
+        		sh "docker push egiantsdocker/registrationservice"
         	}
         }
  }
