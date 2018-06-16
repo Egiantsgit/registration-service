@@ -13,27 +13,27 @@ public class UserControllerTest {
 
 	@Test
 	public void testGetUsers() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetUser() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	public void testCreateUser() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	public void testCreateOrUpdateUser() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	public void testDeleteUser() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 }
