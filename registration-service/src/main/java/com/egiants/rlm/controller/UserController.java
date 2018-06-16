@@ -35,7 +35,7 @@ public class UserController {
 
 	// swagger annotation
 	@ApiOperation(value = "search a user with email")
-	@RequestMapping(value = "/{emailId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<User> getUser(@PathVariable("emailId") String emailId) {
 
@@ -44,7 +44,7 @@ public class UserController {
 
 	// swagger annotation
 	@ApiOperation(value = "Add a user")
-	@RequestMapping(value = "/{emailId}", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<User> createUser(@PathVariable("emailId") String emailId, @RequestBody User user) {
@@ -56,20 +56,21 @@ public class UserController {
 
 	// swagger annotation
 	@ApiOperation(value = "update a user")
-	@RequestMapping(value = "/{emailId}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<User> createOrUpdateUser(@PathVariable("emailId") String emailId, @RequestBody User user) {
+	public ResponseEntity<User> updateUser(@PathVariable("emailId") String emailId, @RequestBody User user) {
 
 		// TODO: add MISMATCH identifier validation exception
 
-		return new ResponseEntity<>(this.userService.createOrUpdateUser(user), HttpStatus.CREATED);
+		return new ResponseEntity<>(this.userService.updateUser(user), HttpStatus.CREATED);
 	}
 
 	// swagger annotation
 	@ApiOperation(value = "delete a user")
-	@RequestMapping(value = "/{emailId}", method = RequestMethod.DELETE, produces = { MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.DELETE, produces = {
+			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
 	public ResponseEntity<Void> deleteUser(@PathVariable("emailId") String emailId) {
 
 		this.userService.deleteUser(emailId);
