@@ -30,8 +30,8 @@ pipeline{
         stage("Docker build"){
         	steps{
         	    sh "docker login --username egiantsdocker --password Egaints#1"        	
-        		sh "docker build -t egiantsdocker/registrationservice ."
-        		sh "docker push egiantsdocker/registrationservice"
+        		sh "cd registration-service && docker build -t egiantsdocker/registrationservice ."
+        		sh "cd registration-service && docker push egiantsdocker/registrationservice"
         	}
         }
  }
