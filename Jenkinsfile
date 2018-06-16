@@ -15,13 +15,13 @@ pipeline{
         
         stage("Unit test"){
             steps{
-                sh "sh ./mvnw test"
+                sh "cd registration-service && sh ./mvnw test"
             }
         }
         
         stage("Package"){
         	steps{
-        		sh "sh ./mvnw package"
+        		sh "cd registration-service && sh ./mvnw package"
         	}
         }        
         
