@@ -37,8 +37,8 @@ pipeline{
         stage("Docker build"){            
                 steps{
                     dir('registration-service'){
-                       echo ${DB_KEY}
-                       echo ${DB_S_KEY}                         
+                       echo "${DB_KEY}"
+                       echo "${DB_S_KEY}"                         
                       //  sh "docker login --username egiantsdocker --password Egaints#1"        	
                       //  sh "docker build -t egiantsdocker/registrationservice ."
                       //  sh "docker push egiantsdocker/registrationservice"
@@ -46,12 +46,12 @@ pipeline{
                 }
         }
         
-        stage("Deploy"){
+        /*stage("Deploy"){
             steps{
               //  sh "docker pull egiantsdocker/registrationservice"
               //  sh "docker run -p 8082:8082 --name registrationservice egiantsdocker/registrationservice"
             }
-        }
+        }*/
     }
  
 }        
