@@ -1,6 +1,7 @@
 pipeline{
     agent any    
     stages{
+      dir('registration-service'){
         stage("checkout"){
             steps{
                 git url:'https://github.com/Egiantsgit/registration-service.git'
@@ -8,22 +9,20 @@ pipeline{
         }
         
         stage("Compile"){
-            steps{
-                dir('registration-service'){
-                    sh "sh ./mvnw compile"      
-                }
+            steps{                
+                    sh "sh ./mvnw compile"                      
             }
         }
         
         stage("Unit test"){
-            steps{
-                sh "cd registration-service && sh ./mvnw test"
+            steps{                
+                sh "sh ./mvnw test"
             }
         }
         
         stage("Package"){
         	steps{
-        		sh "cd registration-service && sh ./mvnw package"
+        		sh "sh ./mvnw package"
         	}
         }        
         
@@ -32,10 +31,11 @@ pipeline{
         stage("Docker build"){
         	steps{
         	    sh "docker login --username egiantsdocker --password Egaints#1"        	
-        		sh "cd registration-service && docker build -t egiantsdocker/registrationservice ."
-        		sh "cd registration-service && docker push egiantsdocker/registrationservice"
+        		sh "docker build -t egiantsdocker/registrationservice ."
+        		sh "docker push egiantsdocker/registrationservice"
         	}
         }
+      }
  }
 }        
         
