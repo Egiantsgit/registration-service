@@ -1,8 +1,6 @@
 package com.egiants.rlm.entity;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.UUID;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
@@ -17,9 +15,26 @@ public class User {
 	private String createdBy;
 	private String lastModifiedBy;
 	private UUID uid;
-	
-	private Date createdDate;
-	private Date lastModifiedDate;
+	private String createdDateTime;
+	private String lastModifiedDateTime;
+
+	public User() {
+		super();
+	}
+
+	public User(String firstName, String lastName, String emailId, String role, String createdBy, String lastModifiedBy,
+			UUID uid, String createdDateTime, String lastModifiedDateTime) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailId = emailId;
+		this.role = role;
+		this.createdBy = createdBy;
+		this.lastModifiedBy = lastModifiedBy;
+		this.uid = uid;
+		this.createdDateTime = createdDateTime;
+		this.lastModifiedDateTime = lastModifiedDateTime;
+	}
 
 	@DynamoDBAttribute(attributeName = "firstName")
 	public String getFirstName() {
@@ -84,20 +99,22 @@ public class User {
 		this.uid = uid;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	@DynamoDBAttribute(attributeName = "lastModifiedDateTime")
+	public String getLastModifiedDateTime() {
+		return lastModifiedDateTime;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setLastModifiedDateTime(String lastModifiedDateTime) {
+		this.lastModifiedDateTime = lastModifiedDateTime;
 	}
 
-	public Date getLastModifiedDate() {
-		return lastModifiedDate;
+	@DynamoDBAttribute(attributeName = "createdDateTime")
+	public String getCreatedDateTime() {
+		return createdDateTime;
 	}
 
-	public void setLastModifiedDate(Date lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
+	public void setCreatedDateTime(String createdDateTime) {
+		this.createdDateTime = createdDateTime;
 	}
 
 }

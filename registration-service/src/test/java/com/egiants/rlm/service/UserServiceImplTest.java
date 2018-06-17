@@ -78,9 +78,9 @@ public class UserServiceImplTest {
 	public void testCreateOrUpdateUser() {
 		Mockito.doReturn(this.user)
 		.when(this.userDao)
-		.createOrUpdateUser(this.user);
+		.updateUser(this.user);
 		
-		User actualUser = this.userService.createOrUpdateUser(user);
+		User actualUser = this.userService.updateUser(user);
 		assertEquals(FIRST_NAME, actualUser.getFirstName());
 	}
 
