@@ -3,7 +3,7 @@ package com.egiants.rlm.entity;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-//Education model
+
 @DynamoDBTable(tableName = "education")
 public class Education {
 	private String emailId;

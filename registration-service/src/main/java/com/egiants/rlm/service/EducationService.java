@@ -3,7 +3,7 @@ package com.egiants.rlm.service;
 import java.util.List;
 
 import com.egiants.rlm.entity.Education;
-//Education Service
+
 public interface EducationService {
 
 	List<Education> getUsers();

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.egiants.rlm.dao.EducationDao;
 import com.egiants.rlm.entity.Education;
 
-//education Service implementation
 @Service
 public class EducationServiceImpl implements EducationService {
 

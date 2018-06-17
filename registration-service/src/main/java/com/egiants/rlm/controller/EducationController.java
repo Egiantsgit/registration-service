@@ -18,24 +18,22 @@ import com.egiants.rlm.service.EducationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@RestController //education controller
+@RestController 
 @RequestMapping("/education") 
-@Api(value = "Registration", description = "Operations pertaining to users") // swagger annotation
+@Api(value = "Registration", description = "Operations pertaining to users") 
 public class EducationController {
 
 	@Autowired
 	private EducationService educationService;
 
-	// swagger annotation
 	@ApiOperation(value = "view list of users")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Education>> getUsers() {
 		return new ResponseEntity<>(this.educationService.getUsers(), HttpStatus.OK);
 	}
 
-	// swagger annotation
 	@ApiOperation(value = "search a user with email")
-	@RequestMapping(value = "/{emailId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Education> getUser(@PathVariable("emailId") String emailId) {
 
@@ -44,7 +42,7 @@ public class EducationController {
 
 	// swagger annotation
 	@ApiOperation(value = "Add a user")
-	@RequestMapping(value = "/{emailId}", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Education> createUser(@PathVariable("emailId") String emailId, @RequestBody Education user) {
@@ -54,9 +52,8 @@ public class EducationController {
 		return new ResponseEntity<>(this.educationService.createUser(user), HttpStatus.CREATED);
 	}
 
-	// swagger annotation
 	@ApiOperation(value = "update a user")
-	@RequestMapping(value = "/{emailId}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Education> createOrUpdateUser(@PathVariable("emailId") String emailId,
@@ -67,9 +64,8 @@ public class EducationController {
 		return new ResponseEntity<>(this.educationService.createOrUpdateUser(user), HttpStatus.CREATED);
 	}
 
-	// swagger annotation
 	@ApiOperation(value = "delete a user")
-	@RequestMapping(value = "/{emailId}", method = RequestMethod.DELETE, produces = { MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.DELETE, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> deleteUser(@PathVariable("emailId") String emailId) {
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.egiants.rlm.entity.Education;
-//education Dao Implementation
+
 @Repository
 public class EducationDaoImpl implements EducationDao {
 

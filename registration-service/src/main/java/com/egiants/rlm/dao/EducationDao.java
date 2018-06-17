@@ -3,7 +3,7 @@ package com.egiants.rlm.dao;
 import java.util.List;
 
 import com.egiants.rlm.entity.Education;
-//education Dao
+
 public interface EducationDao {
 
 	List<Education> getUsers();
