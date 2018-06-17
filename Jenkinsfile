@@ -37,9 +37,11 @@ pipeline{
         stage("Docker build"){            
                 steps{
                     dir('registration-service'){
-                        sh "docker login --username egiantsdocker --password Egaints#1"        	
-                        sh "docker build -t egiantsdocker/registrationservice ."
-                        sh "docker push egiantsdocker/registrationservice"
+                       echo ${DB_KEY}
+                       echo ${DB_S_KEY}                         
+                      //  sh "docker login --username egiantsdocker --password Egaints#1"        	
+                      //  sh "docker build -t egiantsdocker/registrationservice ."
+                      //  sh "docker push egiantsdocker/registrationservice"
                     }
                 }
         }
