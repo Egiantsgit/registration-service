@@ -43,6 +43,13 @@ pipeline{
                     }
                 }
         }
+        
+        stage("Deploy"){
+            steps{
+                sh "docker pull egiantsdocker/registrationservice"
+                sh "docker run -p 8082:8082 --name registrationservice egiantsdocker/registrationservice"
+            }
+        }
     }
  
 }        
