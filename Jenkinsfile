@@ -39,7 +39,7 @@ pipeline{
                     dir('registration-service'){
                        echo "${DB_KEY}"
                        echo "${DB_S_KEY}"                         
-                      //  sh "docker login --username egiantsdocker --password Egaints#1"        	
+                        //  sh "docker login --username ${DOCKER_HUB_USERNAME} --password ${DOCKER_HUB_PASSWORD}"        	
                       //  sh "docker build -t egiantsdocker/registrationservice ."
                       //  sh "docker push egiantsdocker/registrationservice"
                     }
