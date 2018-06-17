@@ -8,42 +8,42 @@ pipeline{
             }
         }
         
-        stage("Compile"){
-            dir('registration-service'){
-                steps{                
+        stage("Compile"){            
+                steps{   
+                    dir('registration-service'){
                         sh "sh ./mvnw compile"                      
+                    }
                 }
-            }
         }
         
-        stage("Unit test"){
-            dir('registration-service'){
-                steps{                
-                    sh "sh ./mvnw test"
-                }
-            }                
+        stage("Unit test"){            
+                steps{     
+                    dir('registration-service'){
+                        sh "sh ./mvnw test"
+                    }
+                }                
         }
         
-        stage("Package"){
-            dir('registration-service'){
+        stage("Package"){            
                 steps{
-                    sh "sh ./mvnw package"
+                    dir('registration-service'){
+                        sh "sh ./mvnw package"
+                    }
                 }
-            }
         }        
         
         
         
-        stage("Docker build"){
-            dir('registration-service'){
+        stage("Docker build"){            
                 steps{
-                    sh "docker login --username egiantsdocker --password Egaints#1"        	
-                    sh "docker build -t egiantsdocker/registrationservice ."
-                    sh "docker push egiantsdocker/registrationservice"
+                    dir('registration-service'){
+                        sh "docker login --username egiantsdocker --password Egaints#1"        	
+                        sh "docker build -t egiantsdocker/registrationservice ."
+                        sh "docker push egiantsdocker/registrationservice"
+                    }
                 }
-            }
         }
-      }
+    }
  
 }        
         
