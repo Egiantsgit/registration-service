@@ -34,6 +34,7 @@ public class UserDemoGraphicController {
 	}
 
 	@ApiOperation(value = "search a user with email")
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserDemoGraphic> getUser(@PathVariable("emailId") String emailId) {
 
@@ -41,6 +42,7 @@ public class UserDemoGraphicController {
 	}
 
 	@ApiOperation(value = "Add a user")
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserDemoGraphic> createUser(@PathVariable("emailId") String emailId,
@@ -53,6 +55,7 @@ public class UserDemoGraphicController {
 	}
 
 	@ApiOperation(value = "update a user")
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserDemoGraphic> createOrUpdateUser(@PathVariable("emailId") String emailId,
@@ -65,6 +68,7 @@ public class UserDemoGraphicController {
 	}
 
 	@ApiOperation(value = "delete a user")
+	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.DELETE, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> deleteUser(@PathVariable("emailId") String emailId) {
 
