@@ -2,6 +2,8 @@ package com.egiants.rlm.controller;
 
 import com.egiants.rlm.Exceptions.MismatchIdentifierException;
 import com.egiants.rlm.entity.User;
+import com.egiants.rlm.entity.UserDemoGraphic;
+import com.egiants.rlm.service.UserDemoGraphicService;
 import com.egiants.rlm.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,32 +19,32 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserControllerTest {
+public class UserDemoGraphicControllerTest {
 
     private static final String EMAIL_ID = "xyz@gmail.com";
     private static final String MISMATCH_EMAIL_ID = "mismatchEmailId@gmail.com";
     private static final String FIRST_NAME = "firstName";
 
-    private User user;
-    private List<User> users;
+    private UserDemoGraphic userdemogrpahic;
+    private List<UserDemoGraphic> usersDemographic;
 
     @Mock
-    private UserService userService;
+    private UserDemoGraphicService userDemoGraphicService;
 
     @InjectMocks
-    private UserController userController;
+    private UserDemoGraphicController userDemoGraphicController;
 
     @Before
     public void setUp() throws Exception {
 
-        this.user = Mockito.mock(User.class);
-        this.users = Arrays.asList(user);
+        this.userdemogrpahic = Mockito.mock(UserDemoGraphic.class);
+        this.usersDemographic = Arrays.asList(userdemogrpahic);
 
         Mockito.doReturn(FIRST_NAME)
-                .when(user)
+                .when(userdemogrpahic)
                 .getFirstName();
         Mockito.doReturn(EMAIL_ID)
-                .when(this.user)
+                .when(this.userdemogrpahic)
                 .getEmailId();
 
         MockitoAnnotations.initMocks(this);
@@ -50,11 +52,11 @@ public class UserControllerTest {
 
     @Test
     public void testGetUsers() {
-        Mockito.doReturn(this.users)
-                .when(this.userService)
+        Mockito.doReturn(this.usersDemographic)
+                .when(this.userDemoGraphicService)
                 .getUsers();
 
-        ResponseEntity<List<User>> responseEntity = this.userController.getUsers();
+        ResponseEntity<List<UserDemoGraphic>> responseEntity = this.userDemoGraphicController.getUsers();
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(FIRST_NAME, responseEntity.getBody().get(0).getFirstName());
@@ -62,11 +64,11 @@ public class UserControllerTest {
 
     @Test
     public void testGetUser() {
-        Mockito.doReturn(user)
-                .when(this.userService)
+        Mockito.doReturn(userdemogrpahic)
+                .when(this.userDemoGraphicService)
                 .getUser(EMAIL_ID);
 
-        ResponseEntity<User> responseEntity = this.userController.getUser(EMAIL_ID);
+        ResponseEntity<UserDemoGraphic> responseEntity = this.userDemoGraphicController.getUser(EMAIL_ID);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(FIRST_NAME, responseEntity.getBody().getFirstName());
@@ -74,12 +76,12 @@ public class UserControllerTest {
 
     @Test
     public void testCreateUser() {
-        Mockito.doReturn(this.user)
-                .when(this.userService)
-                .createUser(this.user);
+        Mockito.doReturn(this.userdemogrpahic)
+                .when(this.userDemoGraphicService)
+                .createUser(this.userdemogrpahic);
 
-        ResponseEntity<User> responseEntity =
-                this.userController.createUser(EMAIL_ID, user);
+        ResponseEntity<UserDemoGraphic> responseEntity =
+                this.userDemoGraphicController.createUser(EMAIL_ID, userdemogrpahic);
 
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
         assertEquals(FIRST_NAME, responseEntity.getBody().getFirstName());
@@ -88,42 +90,42 @@ public class UserControllerTest {
     @Test(expected = MismatchIdentifierException.class)
     public void testCreateUserException() {
         Mockito.doReturn(MISMATCH_EMAIL_ID)
-                .when(this.user)
+                .when(this.userdemogrpahic)
                 .getEmailId();
 
-        this.userController.createUser(EMAIL_ID, user);
+        this.userDemoGraphicController.createUser(EMAIL_ID, userdemogrpahic);
     }
 
     @Test
     public void testUpdateUser() {
-        Mockito.doReturn(this.user)
-                .when(this.userService)
-                .updateUser(this.user);
+        Mockito.doReturn(this.userdemogrpahic)
+                .when(this.userDemoGraphicService)
+                .createOrUpdateUser(this.userdemogrpahic);
 
-        ResponseEntity<User> responseEntity =
-                this.userController.updateUser(EMAIL_ID, user);
+        ResponseEntity<UserDemoGraphic> responseEntity =
+                this.userDemoGraphicController.createOrUpdateUser(EMAIL_ID, userdemogrpahic);
 
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
         assertEquals(FIRST_NAME, responseEntity.getBody().getFirstName());
     }
 
     @Test(expected = MismatchIdentifierException.class)
     public void testUpdateUserException() {
         Mockito.doReturn(MISMATCH_EMAIL_ID)
-                .when(this.user)
+                .when(this.userdemogrpahic)
                 .getEmailId();
 
-        this.userController.updateUser(EMAIL_ID, user);
+        this.userDemoGraphicController.createOrUpdateUser(EMAIL_ID, userdemogrpahic);
     }
 
     @Test
     public void testDeleteUser() {
         Mockito.doNothing()
-                .when(this.userService)
+                .when(this.userDemoGraphicService)
                 .deleteUser(EMAIL_ID);
 
         ResponseEntity<Void> responseEntity =
-                this.userController.deleteUser(EMAIL_ID);
+                this.userDemoGraphicController.deleteUser(EMAIL_ID);
 
         assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
     }
