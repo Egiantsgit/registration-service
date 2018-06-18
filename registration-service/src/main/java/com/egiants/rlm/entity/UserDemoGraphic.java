@@ -1,169 +1,138 @@
 package com.egiants.rlm.entity;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConvertedEnum;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverter;
+import com.egiants.rlm.converter.AddressItemConverter;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import java.time.LocalDate;
+import java.util.UUID;
 
 @DynamoDBTable(tableName = "userDemoGraphic")
 public class UserDemoGraphic {
 
-	private String firstName;
-	private String middleName;
-	private String lastName;
-	private Gender gender;
-	private String DateOfBirth;
-	private String Nationality;
-	private MaritalStatus MaritalStatus;
-	private long workPhoneNo;
-	private long personalPhoneNo;
-	private String emailId;
-	private Address address;
-	// Bank statement
+    //TODO: need to add external and entity model objects to isolate this attributes
+    private UUID uuid;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private Gender gender;
+    private LocalDate dateOfBirth;
+    private String nationality;
+    private Integer ssn;
+    private MaritalStatus maritalStatus;
+    private Address currentAddress;
+    private Address nativeAddress;
+    private Integer workPhoneNo;
+    private Integer personalPhoneNo;
+    private String emailId;
+    //drivers license or state Id
+    //Bank statement
 
-	@DynamoDBAttribute(attributeName = "firstName")
-	public String getFirstName() {
-		return firstName;
-	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    @DynamoDBHashKey(attributeName = "uuid")
+    public UUID getUuid() { return uuid; }
 
-	@DynamoDBAttribute(attributeName = "middleName")
-	public String getMiddleName() {
-		return middleName;
-	}
+    public void setUuid(UUID uuid) { this.uuid = uuid; }
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
+    @DynamoDBAttribute(attributeName = "firstName")
+    public String getFirstName() {
+        return firstName;
+    }
 
-	@DynamoDBAttribute(attributeName = "lastName")
-	public String getLastName() {
-		return lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    @DynamoDBAttribute(attributeName = "middleName")
+    public String getMiddleName() {
+        return middleName;
+    }
 
-	@DynamoDBTypeConvertedEnum
-	@DynamoDBAttribute(attributeName = "gender")
-	public Gender getGender() {
-		return gender;
-	}
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
 
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
+    @DynamoDBAttribute(attributeName = "lastName")
+    public String getLastName() {
+        return lastName;
+    }
 
-	@DynamoDBAttribute(attributeName = "DateOfBirth")
-	public String getDateOfBirth() {
-		return DateOfBirth;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setDateOfBirth(String dateOfBirth) {
-		DateOfBirth = dateOfBirth;
-	}
+    @DynamoDBTypeConvertedEnum
+    @DynamoDBAttribute(attributeName = "gender")
+    public Gender getGender() {
+        return gender;
+    }
 
-	@DynamoDBAttribute(attributeName = "Nationality")
-	public String getNationality() {
-		return Nationality;
-	}
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
 
-	public void setNationality(String nationality) {
-		Nationality = nationality;
-	}
+    @DynamoDBAttribute(attributeName = "dateOfBirth")
+    public LocalDate getDateOfBirth() { return dateOfBirth; }
 
-	@DynamoDBTypeConvertedEnum
-	@DynamoDBAttribute(attributeName = "MaritalStatus")
-	public MaritalStatus getMaritalStatus() {
-		return MaritalStatus;
-	}
+    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
 
-	public void setMaritalStatus(MaritalStatus maritalStatus) {
-		MaritalStatus = maritalStatus;
-	}
+    @DynamoDBAttribute(attributeName = "nationality")
+    public String getNationality() { return nationality; }
 
-	@DynamoDBAttribute(attributeName = "WorkPhoneNo")
-	public long getWorkPhoneNo() {
-		return workPhoneNo;
-	}
+    public void setNationality(String nationality) { this.nationality = nationality; }
 
-	public void setWorkPhoneNo(long workPhoneNo) {
-		this.workPhoneNo = workPhoneNo;
-	}
+    @DynamoDBAttribute(attributeName = "ssn")
+    public Integer getSsn() { return ssn; }
 
-	@DynamoDBAttribute(attributeName = "personalPhoneNo")
-	public long getPersonalPhoneNo() {
-		return personalPhoneNo;
-	}
+    public void setSsn(Integer ssn) { this.ssn = ssn; }
 
-	public void setPersonalPhoneNo(long personalPhoneNo) {
-		this.personalPhoneNo = personalPhoneNo;
-	}
+    @DynamoDBTypeConvertedEnum
+    @DynamoDBAttribute(attributeName = "maritalStatus")
+    public MaritalStatus getMaritalStatus() { return maritalStatus; }
 
-	@DynamoDBHashKey(attributeName = "emailId")
-	public String getEmailId() {
-		return emailId;
-	}
+    public void setMaritalStatus(MaritalStatus maritalStatus) { this.maritalStatus = maritalStatus; }
 
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
+    @DynamoDBTypeConverted(converter = AddressItemConverter.class)
+    @DynamoDBAttribute(attributeName = "currentAddress")
+    public Address getCurrentAddress() { return currentAddress; }
 
-	@DynamoDBTypeConverted(converter = AddressConverter.class)
-	@DynamoDBAttribute(attributeName = "address")
-	public Address getAddress() {
-		return address;
-	}
+    public void setCurrentAddress(Address currentAddress) { this.currentAddress = currentAddress; }
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+    @DynamoDBTypeConverted(converter = AddressItemConverter.class)
+    @DynamoDBAttribute(attributeName = "nativeAddress")
+    public Address getNativeAddress() { return nativeAddress; }
 
-	// Converts the complex type DimensionType to a string and vice-versa.
-	static public class AddressConverter implements DynamoDBTypeConverter<String, Address> {
+    public void setNativeAddress(Address nativeAddress) { this.nativeAddress = nativeAddress; }
 
-		@Override
-		public String convert(Address object) {
-			Address addressDetails = (Address) object;
-			String Address = null;
-			try {
-				if (addressDetails != null) {
-					Address = String.format("%s x %s x %s %s x %s ", addressDetails.getLine1(),
-							addressDetails.getLine2(), addressDetails.getCity(), addressDetails.getState(),
-							addressDetails.getPostalcode());
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return Address;
-		}
+    @DynamoDBAttribute(attributeName = "workPhoneNo")
+    public Integer getWorkPhoneNo() {
+        return workPhoneNo;
+    }
 
-		@Override
-		public Address unconvert(String s) {
+    public void setWorkPhoneNo(Integer workPhoneNo) {
+        this.workPhoneNo = workPhoneNo;
+    }
 
-			Address addressDetails = new Address();
-			try {
-				if (s != null && s.length() != 0) {
-					String[] data = s.split("x");
-					addressDetails.setLine1(data[0].trim());
-					addressDetails.setLine2(data[1].trim());
-					addressDetails.setCity(data[2].trim());
-					addressDetails.setState(data[3].trim());
-					addressDetails.setPostalcode(data[4].trim());
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+    @DynamoDBAttribute(attributeName = "personalPhoneNo")
+    public Integer getPersonalPhoneNo() {
+        return personalPhoneNo;
+    }
 
-			return addressDetails;
-		}
-	}
+    public void setPersonalPhoneNo(Integer personalPhoneNo) {
+        this.personalPhoneNo = personalPhoneNo;
+    }
+
+    @DynamoDBAttribute(attributeName = "emailId")
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
 
 }

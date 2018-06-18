@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@Api(value = "Registration", description = "Operations pertaining to users") // swagger annotation
+@Api(value = "Registration", description = "Operations pertaining to users")
 public class UserController {
 
     @Autowired

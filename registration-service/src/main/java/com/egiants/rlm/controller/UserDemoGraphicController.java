@@ -20,23 +20,24 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/userDemoGrpahics")
-@Api(value = "Registration", description = "Operations pertaining to users") 
+@RequestMapping("/usersDemoGraphics")
+@Api(value = "Registration", description = "Operations pertaining to UsersDemoGraphics")
 public class UserDemoGraphicController {
 
 	@Autowired
 	private UserDemoGraphicService UserDemoGraphicService;
 
-	@ApiOperation(value = "view list of users")
+	@ApiOperation(value = "List of UsersDemoGraphics info")
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<UserDemoGraphic>> getUsers() {
+	public ResponseEntity<List<UserDemoGraphic>> getUsersDemoGraphics() {
 		return new ResponseEntity<>(this.UserDemoGraphicService.getUsers(), HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "search a user with email")
-	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<UserDemoGraphic> getUser(@PathVariable("emailId") String emailId) {
+	@ApiOperation(value = "Get UserDemoGraphics with email")
+	@RequestMapping(value = "/userDemoGraphicInfo/{emailId:.+}",
+			method = RequestMethod.GET, produces = {
+			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<UserDemoGraphic> getUserDemoGraphicInfo(@PathVariable("emailId") String emailId) {
 
 		return new ResponseEntity<>(this.UserDemoGraphicService.getUser(emailId), HttpStatus.OK);
 	}

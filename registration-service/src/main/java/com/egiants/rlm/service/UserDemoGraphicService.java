@@ -6,14 +6,14 @@ import com.egiants.rlm.entity.UserDemoGraphic;
 
 public interface UserDemoGraphicService {
 
-	List<UserDemoGraphic> getUsers();
+	List<UserDemoGraphic> getUsersDemoGraphics();
 
-	UserDemoGraphic getUser(String emailId);
+	UserDemoGraphic getUserDemoGraphicInfo(String emailId);
 
-	UserDemoGraphic createUser(UserDemoGraphic user);
+	UserDemoGraphic createUserDemoGraphicInfo(UserDemoGraphic user);
 
-	UserDemoGraphic createOrUpdateUser(UserDemoGraphic user);
+	UserDemoGraphic updateUserDemoGraphicInfo(UserDemoGraphic user);
 
-	void deleteUser(String emailId);
+	void deleteUserDemoGraphicInfo(String emailId);
 
 }
