@@ -35,11 +35,11 @@ public class SpringDataUserDaoImpl implements UserDao {
 	@Override
 	public User createUser(User user) {
 
-		ZonedDateTime newDate = ZonedDateTime.now(ZoneId.of("UTC-05:00"));
-
-		user.setLastModifiedDateTime(newDate.toString());
-		user.setCreatedDateTime(newDate.toString());
-
+		ZonedDateTime newDate = ZonedDateTime.now(ZoneId.systemDefault());
+		
+		user.setLastModifiedDate(newDate.toString());
+		user.setCreatedDate(newDate.toString());
+		
 		return this.userRepository.save(user);
 	}
 
@@ -66,11 +66,10 @@ public class SpringDataUserDaoImpl implements UserDao {
 		old.setLastName(user.getLastName());
 		old.setRole(user.getRole());
 		old.setLastModifiedBy(user.getLastModifiedBy());
-
-		ZonedDateTime newDate = ZonedDateTime.now(ZoneId.of("UTC-05:00"));
-
-		old.setLastModifiedDateTime(newDate.toString());
-
+		
+		ZonedDateTime newDate = ZonedDateTime.now(ZoneId.systemDefault());
+		
+		old.setLastModifiedDate(newDate.toString());
 		return this.userRepository.save(old);
 
 	}

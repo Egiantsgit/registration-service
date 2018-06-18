@@ -27,6 +27,7 @@ public class UserController {
 	private UserService userService;
 
 	// swagger annotation
+
 	@ApiOperation(value = "view list of users")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getUsers() {

@@ -15,15 +15,15 @@ public class User {
 	private String createdBy;
 	private String lastModifiedBy;
 	private UUID uid;
-	private String createdDateTime;
-	private String lastModifiedDateTime;
+	private String createdDate;
+	private String lastModifiedDate;
 
 	public User() {
 		super();
 	}
 
 	public User(String firstName, String lastName, String emailId, String role, String createdBy, String lastModifiedBy,
-			UUID uid, String createdDateTime, String lastModifiedDateTime) {
+			UUID uid, String createdDate, String lastModifiedDate) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -32,8 +32,8 @@ public class User {
 		this.createdBy = createdBy;
 		this.lastModifiedBy = lastModifiedBy;
 		this.uid = uid;
-		this.createdDateTime = createdDateTime;
-		this.lastModifiedDateTime = lastModifiedDateTime;
+		this.createdDate = createdDate;
+		this.lastModifiedDate = lastModifiedDate;
 	}
 
 	@DynamoDBAttribute(attributeName = "firstName")
@@ -99,22 +99,22 @@ public class User {
 		this.uid = uid;
 	}
 
-	@DynamoDBAttribute(attributeName = "lastModifiedDateTime")
-	public String getLastModifiedDateTime() {
-		return lastModifiedDateTime;
+	@DynamoDBAttribute(attributeName = "lastModifiedDate")
+	public String getLastModifiedDate() {
+		return lastModifiedDate;
 	}
 
-	public void setLastModifiedDateTime(String lastModifiedDateTime) {
-		this.lastModifiedDateTime = lastModifiedDateTime;
+	public void setLastModifiedDate(String lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
 	}
 
-	@DynamoDBAttribute(attributeName = "createdDateTime")
-	public String getCreatedDateTime() {
-		return createdDateTime;
+	@DynamoDBAttribute(attributeName = "createdDate")
+	public String getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreatedDateTime(String createdDateTime) {
-		this.createdDateTime = createdDateTime;
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }
