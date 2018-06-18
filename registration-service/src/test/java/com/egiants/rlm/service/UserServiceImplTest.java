@@ -17,6 +17,7 @@ import static org.mockito.Mockito.verify;
 
 public class UserServiceImplTest {
 
+
     private static final String EMAIL_ID = "xyz@gmail";
     private static final String FIRST_NAME = "firstName";
 

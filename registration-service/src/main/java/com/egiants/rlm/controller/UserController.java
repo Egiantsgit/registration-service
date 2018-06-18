@@ -25,11 +25,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @ApiOperation(value = "List of Users")
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<User>> getUsers() {
         return new ResponseEntity<>(this.userService.getUsers(), HttpStatus.OK);
     }
+
 
     @ApiOperation(value = "Get User with emailId")
     @RequestMapping(value = "/{emailId:.+}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,

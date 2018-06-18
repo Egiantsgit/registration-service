@@ -1,6 +1,7 @@
 package com.egiants.rlm.dao;
 
-import java.util.Date;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 import com.egiants.rlm.dao.config.DynamoDbConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +35,12 @@ public class SpringDataUserDaoImpl implements UserDao {
 	@Override
 	public User createUser(User user) {
 
-			Date newDate = new Date();
-
-			user.setCreatedDate(newDate);
-			user.setLastModifiedDate(newDate);
-			return this.userRepository.save(user);
+		ZonedDateTime newDate = ZonedDateTime.now(ZoneId.systemDefault());
+		
+		user.setLastModifiedDate(newDate.toString());
+		user.setCreatedDate(newDate.toString());
+		
+		return this.userRepository.save(user);
 	}
 
 	@Override
@@ -64,11 +66,10 @@ public class SpringDataUserDaoImpl implements UserDao {
 		old.setLastName(user.getLastName());
 		old.setRole(user.getRole());
 		old.setLastModifiedBy(user.getLastModifiedBy());
-
-		Date newDate = new Date();
-
-		old.setLastModifiedDate(newDate);
-
+		
+		ZonedDateTime newDate = ZonedDateTime.now(ZoneId.systemDefault());
+		
+		old.setLastModifiedDate(newDate.toString());
 		return this.userRepository.save(old);
 
 	}

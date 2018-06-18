@@ -1,8 +1,6 @@
 package com.egiants.rlm.entity;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.UUID;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
@@ -17,9 +15,26 @@ public class User {
 	private String createdBy;
 	private String lastModifiedBy;
 	private UUID uid;
-	
-	private Date createdDate;
-	private Date lastModifiedDate;
+	private String createdDate;
+	private String lastModifiedDate;
+
+	public User() {
+		super();
+	}
+
+	public User(String firstName, String lastName, String emailId, String role, String createdBy, String lastModifiedBy,
+			UUID uid, String createdDate, String lastModifiedDate) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailId = emailId;
+		this.role = role;
+		this.createdBy = createdBy;
+		this.lastModifiedBy = lastModifiedBy;
+		this.uid = uid;
+		this.createdDate = createdDate;
+		this.lastModifiedDate = lastModifiedDate;
+	}
 
 	@DynamoDBAttribute(attributeName = "firstName")
 	public String getFirstName() {
@@ -84,20 +99,22 @@ public class User {
 		this.uid = uid;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public Date getLastModifiedDate() {
+	@DynamoDBAttribute(attributeName = "lastModifiedDate")
+	public String getLastModifiedDate() {
 		return lastModifiedDate;
 	}
 
-	public void setLastModifiedDate(Date lastModifiedDate) {
+	public void setLastModifiedDate(String lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
+	}
+
+	@DynamoDBAttribute(attributeName = "createdDate")
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }
