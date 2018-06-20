@@ -19,28 +19,29 @@ public class DynamoDbConfig {
 
 	@Value("${amazon.dynamodb.endpoint}")
 	private String dBEndpoint;
- 
+
 	@Value("${amazon.aws.accesskey}")
 	private String accessKey;
- 
+
 	@Value("${amazon.aws.secretkey}")
 	private String secretKey;
- 
+
 	@Bean
 	public AmazonDynamoDB amazonDynamoDB() {
 		AmazonDynamoDB dynamoDB = new AmazonDynamoDBClient(amazonAWSCredentials());
- 
+
 		if (!StringUtils.isNullOrEmpty(dBEndpoint)) {
-			
+
 			dynamoDB.setEndpoint(dBEndpoint);
-			 dynamoDB.setRegion(Region.getRegion(Regions.US_EAST_1));
+			dynamoDB.setRegion(Region.getRegion(Regions.US_EAST_1));
 		}
- 
+
 		return dynamoDB;
 	}
- 
+
 	@Bean
 	public AWSCredentials amazonAWSCredentials() {
 		return new BasicAWSCredentials(accessKey, secretKey);
 	}
+
 }
