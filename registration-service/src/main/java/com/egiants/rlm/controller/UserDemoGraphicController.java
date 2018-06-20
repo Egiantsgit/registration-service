@@ -30,7 +30,7 @@ public class UserDemoGraphicController {
 	@ApiOperation(value = "List of UsersDemoGraphics info")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UserDemoGraphic>> getUsersDemoGraphics() {
-		return new ResponseEntity<>(this.UserDemoGraphicService.getUsers(), HttpStatus.OK);
+		return new ResponseEntity<>(this.UserDemoGraphicService.getUsersDemoGraphics(), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Get UserDemoGraphics with email")
@@ -39,41 +39,41 @@ public class UserDemoGraphicController {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserDemoGraphic> getUserDemoGraphicInfo(@PathVariable("emailId") String emailId) {
 
-		return new ResponseEntity<>(this.UserDemoGraphicService.getUser(emailId), HttpStatus.OK);
+		return new ResponseEntity<>(this.UserDemoGraphicService.getUserDemoGraphicInfo(emailId), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Add a user")
 	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<UserDemoGraphic> createUser(@PathVariable("emailId") String emailId,
-			@RequestBody UserDemoGraphic user) {
+	public ResponseEntity<UserDemoGraphic> createUserDemoGraphicInfo(@PathVariable("emailId") String emailId,
+			@RequestBody UserDemoGraphic userDemoGraphic) {
 
-		  if (!emailId.equals(user.getEmailId())) {
+		  if (!emailId.equals(userDemoGraphic.getEmailId())) {
 	            throw new MismatchIdentifierException(emailId);
 	        }
-		return new ResponseEntity<>(this.UserDemoGraphicService.createUser(user), HttpStatus.CREATED);
+		return new ResponseEntity<>(this.UserDemoGraphicService.createUserDemoGraphicInfo(userDemoGraphic), HttpStatus.CREATED);
 	}
 
 	@ApiOperation(value = "update a user")
 	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<UserDemoGraphic> createOrUpdateUser(@PathVariable("emailId") String emailId,
-			@RequestBody UserDemoGraphic user) {
+	public ResponseEntity<UserDemoGraphic> updateUserDemoGraphicInfo(@PathVariable("emailId") String emailId,
+			@RequestBody UserDemoGraphic userDemoGraphic) {
 
-		  if (!emailId.equals(user.getEmailId())) {
+		  if (!emailId.equals(userDemoGraphic.getEmailId())) {
 	            throw new MismatchIdentifierException(emailId);
 	        }
-		return new ResponseEntity<>(this.UserDemoGraphicService.createOrUpdateUser(user), HttpStatus.CREATED);
+		return new ResponseEntity<>(this.UserDemoGraphicService.updateUserDemoGraphicInfo(userDemoGraphic), HttpStatus.CREATED);
 	}
 
 	@ApiOperation(value = "delete a user")
 	@RequestMapping(value = "/{emailId:.+}", method = RequestMethod.DELETE, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<Void> deleteUser(@PathVariable("emailId") String emailId) {
+	public ResponseEntity<Void> deleteUserDemoGraphicInfo(@PathVariable("emailId") String emailId) {
 
-		this.UserDemoGraphicService.deleteUser(emailId);
+		this.UserDemoGraphicService.deleteUserDemoGraphicInfo(emailId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
