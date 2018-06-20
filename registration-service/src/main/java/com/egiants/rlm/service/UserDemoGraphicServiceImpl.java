@@ -11,39 +11,52 @@ import java.util.List;
 @Service
 public class UserDemoGraphicServiceImpl implements UserDemoGraphicService {
 
-    @Autowired
-    private UserDemoGraphicDao UserDemoGraphicDao;
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserDemoGraphicDao UserDemoGraphicDao;
+	@Autowired
+	private UserService userService;
+	
+	
+	@Override
+	public List<UserDemoGraphic> getUsersDemoGraphics() {
+		return this.UserDemoGraphicDao.getUsersDemoGraphics();
+	}
 
-    @Override
-    public List<UserDemoGraphic> getUsers() {
-        return this.UserDemoGraphicDao.getUsers();
-    }
+	@Override
+	public UserDemoGraphic getUserDemoGraphicInfo(String emailId) {
+		User user = this.userService.getUser(emailId);
+		// if(user==null) {
+		// // throw new Exception(); need to throw some custom exception
+		// }
+		return this.UserDemoGraphicDao.getUserDemoGraphicInfo(user.getUuid());
+	}
 
-    @Override
-    public UserDemoGraphic getUser(String emailId) {
-        return this.UserDemoGraphicDao.getUser(emailId);
-    }
+	@Override
+	public UserDemoGraphic createUserDemoGraphicInfo(UserDemoGraphic userDemoGraphic) {
+		User user = this.userService.getUser(userDemoGraphic.getEmailId());
+		if (user == null) {
+			// throw new Exception(); need to throw some custom exception
+		}
+		// TODO: update userDemoGraphic model object with UUID
+		userDemoGraphic.setUuid(user.getUuid());
+		return this.UserDemoGraphicDao.createUserDemoGraphicInfo(userDemoGraphic);
+	}
 
-    @Override
-    public UserDemoGraphic createUser(UserDemoGraphic userDemoGraphic) {
-        User user = this.userService.getUser(userDemoGraphic.getEmailId());
-        if (user == null) {
-            //throw new Exception(); need to throw some custom exception
-        }
-        //TODO: update userDemoGraphic model object with UUID
-        return this.UserDemoGraphicDao.createUser(user);
-    }
+	@Override
+	public UserDemoGraphic updateUserDemoGraphicInfo(UserDemoGraphic userDemoGraphic) {
+		User user = this.userService.getUser(userDemoGraphic.getEmailId());
 
-    @Override
-    public UserDemoGraphic createOrUpdateUser(UserDemoGraphic user) {
-        return this.UserDemoGraphicDao.createOrUpdateUser(user);
-    }
+		userDemoGraphic.setUuid(user.getUuid());
+		return this.UserDemoGraphicDao.updateUserDemoGraphicInfo(userDemoGraphic);
+	}
 
-    @Override
-    public void deleteUser(String emailId) {
-        this.UserDemoGraphicDao.deleteUser(emailId);
-    }
+	@Override
+	public void deleteUserDemoGraphicInfo(String emailId) {
+		User user = this.userService.getUser(emailId);
+		// if(user==null) {
+		// // throw new Exception(); need to throw some custom exception
+		// }
+		this.UserDemoGraphicDao.deleteUserDemoGraphicInfo(user.getUuid());
+	}
 
 }

@@ -1,18 +1,19 @@
 package com.egiants.rlm.dao;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.egiants.rlm.entity.UserDemoGraphic;
 
 public interface UserDemoGraphicDao {
 
-	List<UserDemoGraphic> getUsers();
+	List<UserDemoGraphic> getUsersDemoGraphics();
 
-	UserDemoGraphic getUser(String emailId);
+	UserDemoGraphic getUserDemoGraphicInfo(UUID uuid);
 
-	UserDemoGraphic createUser(UserDemoGraphic user);
+	UserDemoGraphic createUserDemoGraphicInfo(UserDemoGraphic user);
 
-	UserDemoGraphic createOrUpdateUser(UserDemoGraphic user);
+	UserDemoGraphic updateUserDemoGraphicInfo(UserDemoGraphic user);
 
-	void deleteUser(String emailId);
+	void deleteUserDemoGraphicInfo(UUID uuid);
 }
