@@ -1,11 +1,13 @@
-package com.egiants.rlm.dao;
+package com.egiants.rlm.dao.springdata;
+
+
 
 import org.socialsignin.spring.data.dynamodb.repository.DynamoDBCrudRepository;
 import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
 
-import com.egiants.rlm.entity.Education;
+import com.egiants.rlm.entity.User;
 
 @EnableScan
-public interface EducationRepository extends DynamoDBCrudRepository<Education, String> {
-
+public interface UserRepository extends DynamoDBCrudRepository<User, String> {
+	
 }

@@ -1,48 +1,47 @@
 package com.egiants.rlm.service;
 
-import java.util.List;
-import java.util.UUID;
-
+import com.egiants.rlm.dao.UserDao;
+import com.egiants.rlm.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.egiants.rlm.dao.UserDao;
-import com.egiants.rlm.entity.User;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private UserDao userDao;
+    @Autowired
+    private UserDao userDao;
 
-	@Override
-	public List<User> getUsers() {
-		return this.userDao.getUsers();
-	}
+    @Override
+    public List<User> getUsers() {
+        return this.userDao.getUsers();
+    }
 
-	@Override
-	public User getUser(String emailId) {
-		//TODO add exception
-		return this.userDao.getUser(emailId);
-	}
+    @Override
+    public User getUser(String emailId) {
+        //TODO add exception
+        return this.userDao.getUser(emailId);
+    }
 
-	@Override
-	public User createUser(User user) {
+    @Override
+    public User createUser(User user) {
 
-		UUID id = UUID.randomUUID();
-		user.setUid(id);
-		//TODO: duplicate key exception
-		return this.userDao.createUser(user);
-	}
+        UUID id = UUID.randomUUID();
+        user.setUid(id);
+        //TODO: duplicate key exception
+        return this.userDao.createUser(user);
+    }
 
-	@Override
-	public User updateUser(User user) {
-		return this.userDao.updateUser(user);
-	}
+    @Override
+    public User updateUser(User user) {
+        return this.userDao.updateUser(user);
+    }
 
-	@Override
-	public void deleteUser(String emailId) {
-		this.userDao.deleteUser(emailId);
-	}
+    @Override
+    public void deleteUser(String emailId) {
+        this.userDao.deleteUser(emailId);
+    }
 
 }

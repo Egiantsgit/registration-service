@@ -1,5 +1,6 @@
 package com.egiants.rlm.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
@@ -14,12 +15,12 @@ public class UserImmigrationDetails {
 	private String passportIssuedCountry;
 	private String currentStatus;
 	private Date optStartDate;
-	private  Date h1StartDate;
-	private  Date passportExpDate;
+	private Date h1StartDate;
+	private Date passportExpDate;
 	private String i94Number;
 	private String currentStatusValidity;
-	private  Date optEndDate;
-	private  Date h1EndDate;
+	private Date optEndDate;
+	private Date h1EndDate;
 	
 	public UserImmigrationDetails() {
 		

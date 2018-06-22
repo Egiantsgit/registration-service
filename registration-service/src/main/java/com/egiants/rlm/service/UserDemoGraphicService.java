@@ -1,19 +1,19 @@
 package com.egiants.rlm.service;
 
-import java.util.List;
+import com.egiants.rlm.entity.UserDemoGraphics;
 
-import com.egiants.rlm.entity.UserDemoGraphic;
+import java.util.List;
 
 public interface UserDemoGraphicService {
 
-	List<UserDemoGraphic> getUsersDemoGraphics();
+    List<UserDemoGraphics> getUsersDemoGraphics();
 
-	UserDemoGraphic getUserDemoGraphicInfo(String emailId);
+    UserDemoGraphics getUserDemoGraphicInfo(String emailId);
 
-	UserDemoGraphic createUserDemoGraphicInfo(UserDemoGraphic user);
+    UserDemoGraphics createUserDemoGraphicInfo(UserDemoGraphics userDemoGraphics);
 
-	UserDemoGraphic updateUserDemoGraphicInfo(UserDemoGraphic user);
+    UserDemoGraphics updateUserDemoGraphicInfo(UserDemoGraphics userDemoGraphics);
 
-	void deleteUserDemoGraphicInfo(String emailId);
+    void deleteUserDemoGraphicInfo(String emailId);
 
 }

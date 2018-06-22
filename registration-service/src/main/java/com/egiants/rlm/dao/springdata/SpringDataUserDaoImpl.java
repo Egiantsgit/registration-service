@@ -1,8 +1,10 @@
-package com.egiants.rlm.dao;
+package com.egiants.rlm.dao.springdata;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
+
+import com.egiants.rlm.dao.UserDao;
 import com.egiants.rlm.dao.config.DynamoDbConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

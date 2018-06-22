@@ -1,7 +1,9 @@
-package com.egiants.rlm.dao;
+package com.egiants.rlm.dao.springdata;
 
 import java.util.List;
 
+import com.egiants.rlm.dao.UserImmigrationDetailsDao;
+import com.egiants.rlm.dao.springdata.UserImmigrationDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

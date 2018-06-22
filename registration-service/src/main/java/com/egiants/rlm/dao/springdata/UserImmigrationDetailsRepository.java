@@ -1,4 +1,4 @@
-package com.egiants.rlm.dao;
+package com.egiants.rlm.dao.springdata;
 
 import java.util.List;
 

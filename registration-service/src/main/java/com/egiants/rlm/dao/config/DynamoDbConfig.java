@@ -14,7 +14,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.util.StringUtils;
 
 @Configuration
-@EnableDynamoDBRepositories(basePackages = "com.egiants.rlm.dao")
+@EnableDynamoDBRepositories(basePackages = "com.egiants.rlm.dao.springdata")
 public class DynamoDbConfig {
 
 	@Value("${amazon.dynamodb.endpoint}")

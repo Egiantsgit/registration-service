@@ -1,15 +1,7 @@
 package com.egiants.rlm;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Arrays;
-import java.util.UUID;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import com.egiants.rlm.dao.UserRepository;
-import com.egiants.rlm.entity.User;
 
 @SpringBootApplication(scanBasePackages={"com.egiants.rlm"})
 public class RegistrationServiceApplication {
@@ -19,7 +11,7 @@ public class RegistrationServiceApplication {
 		
 	}
 	
-	@Bean
+	/*@Bean
 	CommandLineRunner commandLineRunner(UserRepository userRepository) {
 		
 		return args -> {
@@ -37,7 +29,7 @@ public class RegistrationServiceApplication {
 
 		     ) ); }; 
 		     
-	}
+	}*/
 
 	
 }
