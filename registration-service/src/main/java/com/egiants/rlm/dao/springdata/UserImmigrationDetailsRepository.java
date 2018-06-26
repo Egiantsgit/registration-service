@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.egiants.rlm.entity.UserImmigrationDetails;
 
+//TODO: remove this implementation
 @EnableScan
 @Repository
 public interface UserImmigrationDetailsRepository extends CrudRepository<UserImmigrationDetails, String> {

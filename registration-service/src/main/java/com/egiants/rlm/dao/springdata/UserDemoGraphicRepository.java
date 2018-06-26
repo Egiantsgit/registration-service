@@ -1,3 +1,4 @@
+/*
 package com.egiants.rlm.dao.springdata;
 
 import com.egiants.rlm.entity.UserDemoGraphics;
@@ -12,3 +13,4 @@ import java.util.UUID;
 public interface UserDemoGraphicRepository extends DynamoDBCrudRepository<UserDemoGraphics, UUID> {
 
 }
+*/

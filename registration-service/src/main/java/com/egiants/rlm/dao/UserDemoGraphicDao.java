@@ -1,3 +1,4 @@
+/*
 package com.egiants.rlm.dao;
 
 import com.egiants.rlm.entity.UserDemoGraphics;
@@ -17,3 +18,4 @@ public interface UserDemoGraphicDao {
 
     void deleteUserDemoGraphicInfo(UUID uuid);
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.egiants.rlm.service;
 
 import com.egiants.rlm.dao.UserDemoGraphicDao;
@@ -59,3 +60,4 @@ public class UserDemoGraphicServiceImpl implements UserDemoGraphicService {
     }
 
 }
+*/

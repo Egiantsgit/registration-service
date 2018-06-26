@@ -1,3 +1,4 @@
+/*
 package com.egiants.rlm.service;
 
 import com.egiants.rlm.entity.UserDemoGraphics;
@@ -17,3 +18,4 @@ public interface UserDemoGraphicService {
     void deleteUserDemoGraphicInfo(String emailId);
 
 }
+*/

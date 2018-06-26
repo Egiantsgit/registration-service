@@ -3,9 +3,10 @@ package com.egiants.rlm.service;
 import com.egiants.rlm.entity.User;
 
 import java.util.List;
+import java.util.UUID;
 
 
-public interface UserService {
+public interface UserRegistrationService {
 
     List<User> getUsers();
 

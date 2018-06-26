@@ -1,7 +1,8 @@
-package com.egiants.rlm.service;
+package com.egiants.rlm.service.impl;
 
 import com.egiants.rlm.dao.UserImmigrationDetailsDao;
 import com.egiants.rlm.entity.UserImmigrationDetails;
+import com.egiants.rlm.service.UserImmigrationDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,8 @@
-package com.egiants.rlm.service;
+package com.egiants.rlm.service.impl;
 
 import java.util.List;
 
+import com.egiants.rlm.service.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

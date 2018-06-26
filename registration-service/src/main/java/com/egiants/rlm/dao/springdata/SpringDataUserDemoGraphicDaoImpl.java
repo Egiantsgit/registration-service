@@ -1,3 +1,4 @@
+/*
 package com.egiants.rlm.dao.springdata;
 
 import com.egiants.rlm.dao.UserDemoGraphicDao;
@@ -54,3 +55,4 @@ public class SpringDataUserDemoGraphicDaoImpl implements UserDemoGraphicDao {
     }
 
 }
+*/

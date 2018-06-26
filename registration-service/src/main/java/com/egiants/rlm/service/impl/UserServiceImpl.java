@@ -1,7 +1,9 @@
+/*
 package com.egiants.rlm.service;
 
 import com.egiants.rlm.dao.UserDao;
 import com.egiants.rlm.entity.User;
+import com.egiants.rlm.entity.UserMetaData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +17,12 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> getUsers() {
+    public List<UserMetaData> getUsers() {
         return this.userDao.getUsers();
     }
 
     @Override
-    public User getUser(String emailId) {
+    public UserMetaData getUser(String emailId) {
         //TODO add exception
         return this.userDao.getUser(emailId);
     }
@@ -45,3 +47,4 @@ public class UserServiceImpl implements UserService {
     }
 
 }
+*/
