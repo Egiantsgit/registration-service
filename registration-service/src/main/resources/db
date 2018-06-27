@@ -1,0 +1,3 @@
+#TODO
+#1. Create UserMetaData table with EmailId --> String as primary key
+#2. Create User table with Uuid --> String as primary Key
