@@ -38,7 +38,7 @@ public class UserMetaData {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @DynamoDBAttribute(attributeName = "firstName")
+    @DynamoDBAttribute(attributeName = "FirstName")
     public String getFirstName() {
         return firstName;
     }
@@ -47,7 +47,7 @@ public class UserMetaData {
         this.firstName = firstName;
     }
 
-    @DynamoDBAttribute(attributeName = "lastName")
+    @DynamoDBAttribute(attributeName = "LastName")
     public String getLastName() {
         return lastName;
     }
@@ -56,7 +56,7 @@ public class UserMetaData {
         this.lastName = lastName;
     }
 
-    @DynamoDBHashKey(attributeName = "emailId")
+    @DynamoDBHashKey(attributeName = "EmailId")
     public String getEmailId() {
         return emailId;
     }
@@ -65,7 +65,7 @@ public class UserMetaData {
         this.emailId = emailId;
     }
 
-    @DynamoDBAttribute(attributeName = "role")
+    @DynamoDBAttribute(attributeName = "Role")
     public String getRole() {
         return role;
     }
@@ -74,7 +74,7 @@ public class UserMetaData {
         this.role = role;
     }
 
-    @DynamoDBAttribute(attributeName = "createdBy")
+    @DynamoDBAttribute(attributeName = "CreatedBy")
     public String getCreatedBy() {
         return createdBy;
     }
@@ -83,7 +83,7 @@ public class UserMetaData {
         this.createdBy = createdBy;
     }
 
-    @DynamoDBAttribute(attributeName = "lastModifiedBy")
+    @DynamoDBAttribute(attributeName = "LastModifiedBy")
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
@@ -92,16 +92,16 @@ public class UserMetaData {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    @DynamoDBAttribute(attributeName = "uuid")
+    @DynamoDBAttribute(attributeName = "Uuid")
     public UUID getUuid() {
         return uuid;
     }
 
-    public void setUid(UUID uuid) {
+    public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
 
-    @DynamoDBAttribute(attributeName = "lastModifiedDate")
+    @DynamoDBAttribute(attributeName = "LastModifiedDate")
     public String getLastModifiedDate() {
         return lastModifiedDate;
     }
@@ -110,7 +110,7 @@ public class UserMetaData {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @DynamoDBAttribute(attributeName = "createdDate")
+    @DynamoDBAttribute(attributeName = "CreatedDate")
     public String getCreatedDate() {
         return createdDate;
     }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class SpringDataUserMetaDataDao implements UserMetaDataDao {
@@ -36,17 +37,14 @@ public class SpringDataUserMetaDataDao implements UserMetaDataDao {
     @Override
     public UserMetaData createUserMetaData(UserMetaData userMetaData) {
 
-        ZonedDateTime newDate = ZonedDateTime.now(ZoneId.systemDefault());
-
-        userMetaData.setLastModifiedDate(newDate.toString());
-        userMetaData.setCreatedDate(newDate.toString());
-
+        UUID uuid = UUID.randomUUID();
+        userMetaData.setUuid(uuid);
         return this.userMetaDataRepo.save(userMetaData);
     }
 
     @Override
     public UserMetaData updateUserMetaData(UserMetaData userMetaData) {
-
+        //TODO: for now we will give UUID to UI and they will send it with out any modification
         return customUpdate(userMetaData);
 
     }

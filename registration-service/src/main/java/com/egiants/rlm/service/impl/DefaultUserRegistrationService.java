@@ -6,10 +6,11 @@ import com.egiants.rlm.entity.UserMetaData;
 import com.egiants.rlm.service.UserMetaDataService;
 import com.egiants.rlm.service.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
+@Service
 public class DefaultUserRegistrationService implements UserRegistrationService {
 
     @Autowired
@@ -27,7 +28,7 @@ public class DefaultUserRegistrationService implements UserRegistrationService {
     public User getUser(String emailId) {
 
         UserMetaData userMetaData = this.userMetaDataService.getUserMetaData(emailId);
-        if(userMetaData == null) {
+        if (userMetaData == null) {
             //TODO: throw Exception saying there admin need to register before registration process
         }
         return this.userRegistrationDao.getUser(userMetaData.getUuid());
