@@ -1,21 +1,11 @@
 package com.egiants.rlm.entity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConvertedEnum;
-import com.egiants.rlm.converter.AddressItemConverter;
-
 import java.time.LocalDate;
-import java.util.UUID;
 
-@DynamoDBTable(tableName = "UserDemoGraphics")
-public class UserDemoGraphics {
+public class UserPersonalDetails {
 
     // TODO: need to add external and entity model objects to isolate this
     // attributes
-    private UUID uuid;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -32,16 +22,6 @@ public class UserDemoGraphics {
     // drivers license or state Id
     // Bank statement
 
-    @DynamoDBHashKey(attributeName = "uuid")
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    @DynamoDBAttribute(attributeName = "firstName")
     public String getFirstName() {
         return firstName;
     }
@@ -50,7 +30,6 @@ public class UserDemoGraphics {
         this.firstName = firstName;
     }
 
-    @DynamoDBAttribute(attributeName = "middleName")
     public String getMiddleName() {
         return middleName;
     }
@@ -59,7 +38,6 @@ public class UserDemoGraphics {
         this.middleName = middleName;
     }
 
-    @DynamoDBAttribute(attributeName = "lastName")
     public String getLastName() {
         return lastName;
     }
@@ -68,8 +46,6 @@ public class UserDemoGraphics {
         this.lastName = lastName;
     }
 
-    @DynamoDBTypeConvertedEnum
-    @DynamoDBAttribute(attributeName = "gender")
     public Gender getGender() {
         return gender;
     }
@@ -78,7 +54,6 @@ public class UserDemoGraphics {
         this.gender = gender;
     }
 
-    @DynamoDBAttribute(attributeName = "dateOfBirth")
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -87,7 +62,6 @@ public class UserDemoGraphics {
         this.dateOfBirth = dateOfBirth;
     }
 
-    @DynamoDBAttribute(attributeName = "nationality")
     public String getNationality() {
         return nationality;
     }
@@ -96,7 +70,6 @@ public class UserDemoGraphics {
         this.nationality = nationality;
     }
 
-    @DynamoDBAttribute(attributeName = "ssn")
     public Integer getSsn() {
         return ssn;
     }
@@ -105,8 +78,6 @@ public class UserDemoGraphics {
         this.ssn = ssn;
     }
 
-    @DynamoDBTypeConvertedEnum
-    @DynamoDBAttribute(attributeName = "maritalStatus")
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
@@ -115,8 +86,6 @@ public class UserDemoGraphics {
         this.maritalStatus = maritalStatus;
     }
 
-    @DynamoDBTypeConverted(converter = AddressItemConverter.class)
-    @DynamoDBAttribute(attributeName = "currentAddress")
     public Address getCurrentAddress() {
         return currentAddress;
     }
@@ -125,8 +94,6 @@ public class UserDemoGraphics {
         this.currentAddress = currentAddress;
     }
 
-    @DynamoDBTypeConverted(converter = AddressItemConverter.class)
-    @DynamoDBAttribute(attributeName = "nativeAddress")
     public Address getNativeAddress() {
         return nativeAddress;
     }
@@ -135,7 +102,6 @@ public class UserDemoGraphics {
         this.nativeAddress = nativeAddress;
     }
 
-    @DynamoDBAttribute(attributeName = "workPhoneNo")
     public Integer getWorkPhoneNo() {
         return workPhoneNo;
     }
@@ -144,7 +110,6 @@ public class UserDemoGraphics {
         this.workPhoneNo = workPhoneNo;
     }
 
-    @DynamoDBAttribute(attributeName = "personalPhoneNo")
     public Integer getPersonalPhoneNo() {
         return personalPhoneNo;
     }
@@ -153,7 +118,6 @@ public class UserDemoGraphics {
         this.personalPhoneNo = personalPhoneNo;
     }
 
-    @DynamoDBAttribute(attributeName = "emailId")
     public String getEmailId() {
         return emailId;
     }

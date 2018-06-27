@@ -1,3 +1,4 @@
+/*
 package com.egiants.rlm.service;
 
 import com.egiants.rlm.dao.UserDao;
@@ -95,3 +96,4 @@ public class UserServiceImplTest {
     }
 
 }
+*/

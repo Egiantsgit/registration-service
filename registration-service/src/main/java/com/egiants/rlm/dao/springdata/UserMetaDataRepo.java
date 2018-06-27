@@ -1,13 +1,11 @@
 package com.egiants.rlm.dao.springdata;
 
 
-
+import com.egiants.rlm.entity.UserMetaData;
 import org.socialsignin.spring.data.dynamodb.repository.DynamoDBCrudRepository;
 import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
 
-import com.egiants.rlm.entity.User;
-
 @EnableScan
-public interface UserRepository extends DynamoDBCrudRepository<User, String> {
-	
+public interface UserMetaDataRepo extends DynamoDBCrudRepository<UserMetaData, String> {
+
 }

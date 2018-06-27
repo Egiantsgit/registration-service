@@ -1,3 +1,4 @@
+/*
 package com.egiants.rlm.controller;
 
 import com.egiants.rlm.Exceptions.MismatchIdentifierException;
@@ -129,3 +130,4 @@ public class UserControllerTest {
     }
 
 }
+*/
