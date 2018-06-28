@@ -6,12 +6,14 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 import com.egiants.rlm.converter.UserPersonalDetailsConverter;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @DynamoDBTable(tableName = "User")
 public class User {
 
     private UUID uuid;
+    @Valid
     private UserPersonalDetails userPersonalDetails;
     private String createdBy;
     private String lastModifiedBy;

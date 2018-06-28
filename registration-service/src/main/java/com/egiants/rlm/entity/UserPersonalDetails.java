@@ -1,11 +1,13 @@
 package com.egiants.rlm.entity;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class UserPersonalDetails {
 
     // TODO: need to add external and entity model objects to isolate this
     // attributes
+    @NotNull(message = "FirstName Can't be Null")
     private String firstName;
     private String middleName;
     private String lastName;
