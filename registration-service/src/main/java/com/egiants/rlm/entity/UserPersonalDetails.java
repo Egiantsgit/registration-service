@@ -1,11 +1,18 @@
 package com.egiants.rlm.entity;
 
 import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
+
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 
 public class UserPersonalDetails {
 
     // TODO: need to add external and entity model objects to isolate this
     // attributes
+    
+	
+	
+	@NotNull(message = "firstName Can't be Null")
     private String firstName;
     private String middleName;
     private String lastName;
@@ -29,15 +36,14 @@ public class UserPersonalDetails {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    public String getMiddleName() {
+    
+	public String getMiddleName() {
         return middleName;
     }
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
-
     public String getLastName() {
         return lastName;
     }
@@ -45,7 +51,6 @@ public class UserPersonalDetails {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     public Gender getGender() {
         return gender;
     }
@@ -53,7 +58,6 @@ public class UserPersonalDetails {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -93,7 +97,6 @@ public class UserPersonalDetails {
     public void setCurrentAddress(Address currentAddress) {
         this.currentAddress = currentAddress;
     }
-
     public Address getNativeAddress() {
         return nativeAddress;
     }
@@ -101,7 +104,7 @@ public class UserPersonalDetails {
     public void setNativeAddress(Address nativeAddress) {
         this.nativeAddress = nativeAddress;
     }
-
+	@DynamoDBAttribute(attributeName = "WorkPhoneNo")
     public Integer getWorkPhoneNo() {
         return workPhoneNo;
     }
@@ -125,5 +128,7 @@ public class UserPersonalDetails {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
+
+	
 
 }

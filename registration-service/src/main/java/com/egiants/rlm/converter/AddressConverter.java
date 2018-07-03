@@ -22,7 +22,7 @@ public class AddressConverter implements DynamoDBTypeConverter<String, Address> 
         // TODO: need to find a better way to convert this string to object
         Address address = new Address();
 
-        if (s != null && s.length() != 0) {
+        if (!"null".equals(s) && s.length() != 0) {
             String[] data = s.split("x");
             address.setLine1(data[0].trim());
             address.setLine2(data[1].trim());

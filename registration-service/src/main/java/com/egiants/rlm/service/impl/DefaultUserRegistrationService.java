@@ -36,10 +36,12 @@ public class DefaultUserRegistrationService implements UserRegistrationService {
 
     @Override
     public User createUser(User user) {
-        /*UserMetaData userMetaData = this.userMetaDataService.getUserMetaData(user.get);
+        //TODO: we need to pass emailId as pathParam from controller
+        UserMetaData userMetaData = this.userMetaDataService.getUserMetaData(user.getUserPersonalDetails().getEmailId());
         if(userMetaData == null) {
             //TODO: throw Exception saying there admin need to register before registration process
-        }*/
+        }
+        user.setUuid(userMetaData.getUuid());
         return this.userRegistrationDao.createUser(user);
     }
 

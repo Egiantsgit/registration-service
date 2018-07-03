@@ -1,41 +1,21 @@
 package com.egiants.rlm.entity;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-
-@DynamoDBTable(tableName = "UserImmigrationDetails")
 public class UserImmigrationDetails {
 	
-	private String uuid;
+	
 	private String countryOfBirth;
 	private String passportIssuedCountry;
 	private String currentStatus;
-	private Date optStartDate;
-	private Date h1StartDate;
-	private Date passportExpDate;
+	private LocalDate optStartDate;
+	private LocalDate h1StartDate;
+	private LocalDate passportExpDate;
 	private String i94Number;
 	private String currentStatusValidity;
-	private Date optEndDate;
-	private Date h1EndDate;
+	private LocalDate optEndDate;
+	private LocalDate h1EndDate;
 	
-	public UserImmigrationDetails() {
-		
-	}
-	
-	@DynamoDBHashKey
-	public String getUuid() {
-		return uuid;
-	}
-
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
-	}
-
-    @DynamoDBAttribute
 	public String getCountryOfBirth() {
 		return countryOfBirth;
 	}
@@ -44,7 +24,6 @@ public class UserImmigrationDetails {
 		this.countryOfBirth = countryOfBirth;
 	}
 
-    @DynamoDBAttribute
 	public String getPassportIssuedCountry() {
 		return passportIssuedCountry;
 	}
@@ -53,7 +32,6 @@ public class UserImmigrationDetails {
 		this.passportIssuedCountry = passportIssuedCountry;
 	}
 
-    @DynamoDBAttribute
 	public String getCurrentStatus() {
 		return currentStatus;
 	}
@@ -61,35 +39,30 @@ public class UserImmigrationDetails {
 	public void setCurrentStatus(String currentStatus) {
 		this.currentStatus = currentStatus;
 	}
-
-    @DynamoDBAttribute
-	public  Date getOptStartDate() {
+	public  LocalDate getOptStartDate() {
 		return optStartDate;
 	}
 
-	public void setOptStartDate( Date optStartDate) {
+	public void setOptStartDate( LocalDate optStartDate) {
 		this.optStartDate = optStartDate;
 	}
 
-    @DynamoDBAttribute
-	public  Date getH1StartDate() {
+	public  LocalDate getH1StartDate() {
 		return h1StartDate;
 	}
 
-	public void setH1StartDate( Date h1StartDate) {
+	public void setH1StartDate( LocalDate h1StartDate) {
 		this.h1StartDate = h1StartDate;
 	}
 
-    @DynamoDBAttribute
-	public  Date getPassportExpDate() {
+	public  LocalDate getPassportExpDate() {
 		return passportExpDate;
 	}
 
-	public void setPassportExpDate( Date passportExpDate) {
+	public void setPassportExpDate( LocalDate passportExpDate) {
 		this.passportExpDate = passportExpDate;
 	}
 
-    @DynamoDBAttribute
 	public String getI94Number() {
 		return i94Number;
 	}
@@ -98,7 +71,6 @@ public class UserImmigrationDetails {
 		this.i94Number = i94Number;
 	}
 
-    @DynamoDBAttribute
 	public String getCurrentStatusValidity() {
 		return currentStatusValidity;
 	}
@@ -107,21 +79,19 @@ public class UserImmigrationDetails {
 		this.currentStatusValidity = currentStatusValidity;
 	}
 
-    @DynamoDBAttribute
-	public  Date getOptEndDate() {
+	public  LocalDate getOptEndDate() {
 		return optEndDate;
 	}
 
-	public void setOptEndDate( Date optEndDate) {
+	public void setOptEndDate( LocalDate optEndDate) {
 		this.optEndDate = optEndDate;
 	}
 
-    @DynamoDBAttribute
-	public  Date getH1EndDate() {
+	public  LocalDate getH1EndDate() {
 		return h1EndDate;
 	}
 
-	public void setH1EndDate( Date h1EndDate) {
+	public void setH1EndDate( LocalDate h1EndDate) {
 		this.h1EndDate = h1EndDate;
 	}
 	
