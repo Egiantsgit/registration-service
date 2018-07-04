@@ -3,8 +3,7 @@ package com.egiants.rlm.entity;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
-import com.egiants.rlm.converter.UserPersonalDetailsConverter;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConvertedJson;
 
 import javax.validation.Valid;
 import java.util.UUID;
@@ -27,10 +26,10 @@ public class User {
         this.uuid = uuid;
     }
 
-    @DynamoDBTypeConverted(converter = UserPersonalDetailsConverter.class)
+    @DynamoDBTypeConvertedJson
     @DynamoDBAttribute(attributeName = "UserPersonalDetails")
     public UserPersonalDetails getUserPersonalDetails() {
-        return userPersonalDetails;
+        return this.userPersonalDetails;
     }
 
     public void setUserPersonalDetails(UserPersonalDetails userPersonalDetails) {
