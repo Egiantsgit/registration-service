@@ -39,19 +39,19 @@ pipeline{
                     dir('registration-service'){
                        echo "${DB_KEY}"
                        echo "${DB_S_KEY}"                         
-                        //  sh "docker login --username ${DOCKER_HUB_USERNAME} --password ${DOCKER_HUB_PASSWORD}"        	
-                      //  sh "docker build -t egiantsdocker/registrationservice ."
-                      //  sh "docker push egiantsdocker/registrationservice"
+                          sh "docker login --username ${DOCKER_HUB_USERNAME} --password ${DOCKER_HUB_PASSWORD}"        	
+                          sh "docker build -t egiantsdocker/registrationservice ."
+                         sh "docker push egiantsdocker/registrationservice"
                     }
                 }
         }
         
-        /*stage("Deploy"){
+        stage("Deploy"){
             steps{
-              //  sh "docker pull egiantsdocker/registrationservice"
-              //  sh "docker run -p 8082:8082 --name registrationservice egiantsdocker/registrationservice"
+                sh "docker pull egiantsdocker/registrationservice"
+                sh "docker run -p 8082:8082 --name registrationservice egiantsdocker/registrationservice"
             }
-        }*/
+        }
     }
  
 }        
