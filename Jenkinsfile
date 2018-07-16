@@ -10,7 +10,9 @@ pipeline{
         
         stage("Compile"){            
                 steps{                       
-                        sh "sh ./mvnw compile"                                         
+                    dir('registration-service'){
+                        sh "sh ./mvnw compile"  
+                    }
                 }
         }
         
