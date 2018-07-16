@@ -11,7 +11,7 @@ pipeline{
         stage("Compile"){            
                 steps{   
                     dir('registration-service'){
-                        sh "./mvnw compile"                      
+                        sh "sudo ./mvnw compile"                      
                     }
                 }
         }
