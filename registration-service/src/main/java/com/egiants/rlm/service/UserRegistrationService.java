@@ -11,9 +11,9 @@ public interface UserRegistrationService {
 
     User getUser(String emailId);
 
-    User createUser(User user);
+    User createUser(String emailId, User user);
 
-    User updateUser(User user);
+    User updateUser(String emailId, User user);
 
     void deleteUser(String emailId);
 

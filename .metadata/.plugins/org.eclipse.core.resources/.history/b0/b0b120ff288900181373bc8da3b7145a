@@ -1,0 +1,118 @@
+//
+//package com.egiants.rlm.service;
+//
+//import com.egiants.rlm.dao.UserRegistrationDao;
+//import com.egiants.rlm.dao.springdata.SpringDataUserRegistrationDao;
+//import com.egiants.rlm.entity.User;
+//import com.egiants.rlm.entity.UserPersonalDetails;
+//import com.egiants.rlm.service.impl.DefaultUserRegistrationService;
+//
+//import org.junit.Before;
+//import org.junit.Test;
+//import org.mockito.InjectMocks;
+//import org.mockito.Mock;
+//import org.mockito.Mockito;
+//import org.mockito.MockitoAnnotations;
+//import org.springframework.http.ResponseEntity;
+//
+//import java.util.Arrays;
+//import java.util.List;
+//import java.util.UUID;
+//
+//import static org.junit.Assert.assertEquals;
+//import static org.mockito.Mockito.verify;
+//
+//public class UserServiceImplTest {
+//
+//	
+//	private static final String EMAIL_ID = "email@gmail.com";
+//	private UUID uuid;
+//	private UserPersonalDetails userPersonalDetails;
+//    private User user;
+//    private List<User> users;
+//
+//    @Mock
+//    private SpringDataUserRegistrationDao userRegistrationDao;
+//
+//    @InjectMocks
+//    private DefaultUserRegistrationService  userRegistrationService;
+//
+//    @Before
+//    public void setUp() throws Exception {
+//    	
+//    	
+//    	this.userPersonalDetails=Mockito.mock(UserPersonalDetails.class);
+//        this.user = Mockito.mock(User.class);
+//        this.users = Arrays.asList(user);
+//
+//        Mockito.doReturn(this.userPersonalDetails)
+//                .when(user)
+//                .getUserPersonalDetails();
+//
+//        MockitoAnnotations.initMocks(this);
+//
+//    }
+//       
+//
+//    @Test
+//    public void testGetUsers() {
+//        Mockito.doReturn(this.users)
+//                .when(this.userRegistrationDao)
+//                .getUsers();
+//
+//
+//  List<User> users=this.userRegistrationService.getUsers();
+//  assertEquals(userPersonalDetails,users.get(0).getUserPersonalDetails());
+//    
+//    		
+//    }
+//    
+//    @Test
+//    public void testGetUser() {
+//    	Mockito.doReturn(this.user)
+//        .when(this.userRegistrationDao)
+//        .getUser(EMAIL_ID);
+//
+//    	  User actualUser=this.userRegistrationService.getUser(EMAIL_ID);
+//    	  assertEquals(userPersonalDetails,actualUser.getUserPersonalDetails());
+//
+//    }
+//    
+//    @Test
+//    public void testCreateUser() {
+//    	Mockito.doReturn(this.user)
+//    	.when(this.userRegistrationDao)
+//    	.createUser(EMAIL_ID,user);
+//
+//    	  User  actualUsers=this.userRegistrationService.createUser(EMAIL_ID,user);
+//    	  assertEquals(userPersonalDetails,actualUsers.getUserPersonalDetails());
+//    	
+//    }
+//    
+//    @Test
+//    public void testUpdateUser() {
+//    	Mockito.doReturn(this.user)
+//    	.when(this.userRegistrationDao)
+//    	.updateUser(EMAIL_ID,user);
+//    	
+//    	  User actualUsers=this.userRegistrationService.updateUser(EMAIL_ID,user);
+//    	  assertEquals(userPersonalDetails,actualUsers.getUserPersonalDetails());
+//    	
+//    }
+//    
+//    @Test
+//    public void testDeleteUser() {
+//    	Mockito.doNothing()
+//    	.when(this.userRegistrationDao)
+//    	.deleteUser(EMAIL_ID);
+//    	
+//    	  this.userRegistrationService.deleteUser(EMAIL_ID);
+//    	  verify(userRegistrationDao).deleteUser(EMAIL_ID);
+//    }
+//    
+//    
+//    
+//}
+//    
+//  
+//

@@ -1,0 +1,5 @@
+package com.egiants.rlm.service;
+
+public class UserMetaDataServiceImplTest {
+
+}

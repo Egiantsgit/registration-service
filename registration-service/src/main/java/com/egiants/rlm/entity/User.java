@@ -3,90 +3,86 @@ package com.egiants.rlm.entity;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
-import com.egiants.rlm.converter.UserEducationDetailsConverter;
-import com.egiants.rlm.converter.UserImmigrationDetailsConverter;
-import com.egiants.rlm.converter.UserPersonalDetailsConverter;
-import com.egiants.rlm.converter.UserWorkExperienceConverter;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConvertedJson;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @DynamoDBTable(tableName = "User")
 public class User {
 
-	private UUID uuid; 
-	private UserPersonalDetails userPersonalDetails;
-	private UserEducationDetails userEducationDetails;
-	private UserImmigrationDetails userImmigrationDetails;
-	private UserWorkExperience userworkExperience;
-	private String createdBy;
-	private String lastModifiedBy;
+    private UUID uuid;
+    @Valid
+    private UserPersonalDetails userPersonalDetails;
+    @Valid
+    private UserEducationDetails userEducationDetails;
+    @Valid
+    private UserImmigrationDetails userImmigrationDetails;
+    @Valid
+    private UserWorkExperience userWorkExperience;
+    private String createdBy;
+    private String lastModifiedBy;
 
-	@DynamoDBHashKey(attributeName = "uuid")
-	public UUID getUuid() {
-		return uuid;
-	}
+    @DynamoDBHashKey(attributeName = "Uuid")
+    public UUID getUuid() {
+        return uuid;
+    }
 
-	public void setUuid(UUID uuid) {
-		this.uuid = uuid;
-	}
-	@DynamoDBTypeConverted(converter = UserPersonalDetailsConverter.class)
-	@DynamoDBAttribute(attributeName = "UserPersonalDetails")
-	
-	public UserPersonalDetails getUserPersonalDetails() {
-		return userPersonalDetails;
-	}
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
 
-	public void setUserPersonalDetails(UserPersonalDetails userPersonalDetails) {
-		this.userPersonalDetails = userPersonalDetails;
-	}
-	@DynamoDBTypeConverted(converter = UserEducationDetailsConverter.class)
-	@DynamoDBAttribute(attributeName = "UserEducationDetails")
-	
-	public UserEducationDetails getUserEducationDetails() {
-		return userEducationDetails;
-	}
+    @DynamoDBTypeConvertedJson
+    @DynamoDBAttribute(attributeName = "UserPersonalDetails")
+    public UserPersonalDetails getUserPersonalDetails() {
+        return this.userPersonalDetails;
+    }
 
-	public void setUserEducationDetails(UserEducationDetails userEducationDetails) {
-		this.userEducationDetails = userEducationDetails;
-	}
-	
-	@DynamoDBTypeConverted(converter = UserImmigrationDetailsConverter.class)
-	@DynamoDBAttribute(attributeName = "UserImmigrationDetails")
-	public UserImmigrationDetails getUserImmigrationDetails() {
-		return userImmigrationDetails;
-	}
+    public void setUserPersonalDetails(UserPersonalDetails userPersonalDetails) {
+        this.userPersonalDetails = userPersonalDetails;
+    }
 
-	public void setUserImmigrationDetails(UserImmigrationDetails userImmigrationDetails) {
-		this.userImmigrationDetails = userImmigrationDetails;
-	}
+    @DynamoDBTypeConvertedJson
+    @DynamoDBAttribute(attributeName = "UserEducationDetails")
+    public UserEducationDetails getUserEducationDetails() { return this.userEducationDetails; }
 
-	@DynamoDBTypeConverted(converter = UserWorkExperienceConverter.class)
-	@DynamoDBAttribute(attributeName = "UserworkExperience")
-	public UserWorkExperience getUserworkExperience() {
-		return userworkExperience;
-	}
+    public void setUserEducationDetails(UserEducationDetails userEducationDetails) {
+        this.userEducationDetails = userEducationDetails;
+    }
 
-	public void setUserworkExperience(UserWorkExperience userworkExperience) {
-		this.userworkExperience = userworkExperience;
-	}
-	@DynamoDBAttribute(attributeName = "createdBy")
-	public String getCreatedBy() {
-		return createdBy;
-	}
+    @DynamoDBTypeConvertedJson
+    @DynamoDBAttribute(attributeName = "UserImmigrationDetails")
+    public UserImmigrationDetails getUserImmigrationDetails() {
+        return userImmigrationDetails;
+    }
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-	@DynamoDBAttribute(attributeName = "lastModifiedBy")
-	public String getLastModifiedBy() {
-		return lastModifiedBy;
-	}
+    public void setUserImmigrationDetails(UserImmigrationDetails userImmigrationDetails) {
+        this.userImmigrationDetails = userImmigrationDetails;
+    }
 
-	public void setLastModifiedBy(String lastModifiedBy) {
-		this.lastModifiedBy = lastModifiedBy;
-	}
+    @DynamoDBTypeConvertedJson
+    @DynamoDBAttribute(attributeName = "UserWorkExperience")
+    public UserWorkExperience getUserWorkExperience() {
+        return userWorkExperience;
+    }
 
-	
+    public void setUserWorkExperience(UserWorkExperience userWorkExperience) {
+        this.userWorkExperience = userWorkExperience;
+    }
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
+    }
 }

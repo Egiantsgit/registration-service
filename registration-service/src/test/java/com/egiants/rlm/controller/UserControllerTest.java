@@ -1,9 +1,11 @@
-/*
+
 package com.egiants.rlm.controller;
 
-import com.egiants.rlm.Exceptions.MismatchIdentifierException;
 import com.egiants.rlm.entity.User;
-import com.egiants.rlm.service.UserService;
+import com.egiants.rlm.entity.UserMetaData;
+import com.egiants.rlm.entity.UserPersonalDetails;
+import com.egiants.rlm.service.impl.DefaultUserMetaDataService;
+import com.egiants.rlm.service.impl.DefaultUserRegistrationService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -18,33 +20,41 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserControllerTest {
+public class UserControllerTest  {
 
-    private static final String EMAIL_ID = "xyz@gmail.com";
-    private static final String MISMATCH_EMAIL_ID = "mismatchEmailId@gmail.com";
-    private static final String FIRST_NAME = "firstName";
-
+	private static final String EMAIL_ID = "sairam.mandadi46@gmail.com";
+	private UserPersonalDetails userPersonalDetails;
     private User user;
     private List<User> users;
+	private UserMetaData userMetaData;
+	private List<UserMetaData> usersMetaData;
+
+
 
     @Mock
-    private UserService userService;
+    private DefaultUserRegistrationService userRegistrationService;
+    @Mock
+    private DefaultUserMetaDataService userMetaDataService;
 
     @InjectMocks
-    private UserController userController;
+    private UserRegistrationController userRegistrationController;
+    @InjectMocks
+    private UserMetaDataController UserMetaDataController;
 
     @Before
     public void setUp() throws Exception {
 
+    	this.userPersonalDetails = Mockito.mock(UserPersonalDetails.class);
         this.user = Mockito.mock(User.class);
         this.users = Arrays.asList(user);
+        this.userMetaData =Mockito.mock(UserMetaData.class);
+        
 
-        Mockito.doReturn(FIRST_NAME)
+        Mockito.doReturn(this.userPersonalDetails)
                 .when(user)
-                .getFirstName();
-        Mockito.doReturn(EMAIL_ID)
-                .when(this.user)
-                .getEmailId();
+                .getUserPersonalDetails();
+        
+        /*Mockito.doReturn(EMAIL_ID).when(this.userPersonalDetails).getEmailId();*/
 
         MockitoAnnotations.initMocks(this);
     }
@@ -52,57 +62,101 @@ public class UserControllerTest {
     @Test
     public void testGetUsers() {
         Mockito.doReturn(this.users)
-                .when(this.userService)
+                .when(this.userRegistrationService)
                 .getUsers();
 
-        ResponseEntity<List<User>> responseEntity = this.userController.getUsers();
+        ResponseEntity<List<User>> responseEntity =this.userRegistrationController.getUsers();
+        ResponseEntity<List<UserMetaData>> responseEntityMetaData =this.UserMetaDataController.getUsersMetaData();
+
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(FIRST_NAME, responseEntity.getBody().get(0).getFirstName());
-    }
+        assertEquals(HttpStatus.OK, responseEntityMetaData.getStatusCode());
 
+        assertEquals(this.userPersonalDetails, responseEntity.getBody().get(0).getUserPersonalDetails());
+        assertEquals(usersMetaData, responseEntityMetaData.getBody());
+
+    }
+    
     @Test
     public void testGetUser() {
-        Mockito.doReturn(user)
-                .when(this.userService)
-                .getUser(EMAIL_ID);
+    	
+    	Mockito.doReturn(user)
+    		.when(this.userRegistrationService)
+    		.getUser(EMAIL_ID);
+    	ResponseEntity<User>responseEntity = this.userRegistrationController.getUser(EMAIL_ID);
+    	ResponseEntity<UserMetaData>responseEntityMetaData = this.UserMetaDataController.getUserMetaData(EMAIL_ID);
 
-        ResponseEntity<User> responseEntity = this.userController.getUser(EMAIL_ID);
+    	
+    	 assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+    	 assertEquals(HttpStatus.OK, responseEntityMetaData.getStatusCode());
 
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(FIRST_NAME, responseEntity.getBody().getFirstName());
+         assertEquals(this.userPersonalDetails, responseEntity.getBody().getUserPersonalDetails());	
+         assertEquals(this.userMetaData, responseEntityMetaData.getBody());	
+
     }
+   
 
     @Test
     public void testCreateUser() {
-        Mockito.doReturn(this.user)
-                .when(this.userService)
-                .createUser(this.user);
+        Mockito.doReturn(this.users)
+                .when(this.userRegistrationService)
+                .createUser(EMAIL_ID, user);
 
-        ResponseEntity<User> responseEntity =
-                this.userController.createUser(EMAIL_ID, user);
+        ResponseEntity<User> responseEntity = this.userRegistrationController.createUser(EMAIL_ID, user);
+        ResponseEntity<UserMetaData> responseEntityMetaData = this.UserMetaDataController.createUserMetaData(EMAIL_ID, userMetaData);
+
 
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-        assertEquals(FIRST_NAME, responseEntity.getBody().getFirstName());
-    }
+        assertEquals(HttpStatus.CREATED, responseEntityMetaData.getStatusCode());
 
-    @Test(expected = MismatchIdentifierException.class)
-    public void testCreateUserException() {
-        Mockito.doReturn(MISMATCH_EMAIL_ID)
-                .when(this.user)
-                .getEmailId();
+        assertEquals(this.userPersonalDetails, responseEntity.getBody().getUserPersonalDetails());
+        assertEquals(this.userMetaData, responseEntityMetaData.getBody());
 
-        this.userController.createUser(EMAIL_ID, user);
     }
 
     @Test
     public void testUpdateUser() {
         Mockito.doReturn(this.user)
-                .when(this.userService)
-                .updateUser(this.user);
+                .when(this.userRegistrationService)
+                .updateUser(EMAIL_ID,user);
+
+        ResponseEntity<User> responseEntity =this.userRegistrationController.updateUser(EMAIL_ID,user);
+        ResponseEntity<UserMetaData> responseEntityMetaData =this.UserMetaDataController.updateUserMetaData(EMAIL_ID,userMetaData);
+
+
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.OK, responseEntityMetaData.getStatusCode());
+
+        assertEquals(this.userPersonalDetails, responseEntity.getBody().getUserPersonalDetails());
+        assertEquals(this.userMetaData, responseEntityMetaData.getBody());
+
+    }
+
+  @Test
+    public void testDeleteUser() {
+        Mockito.doReturn(user)
+                .when(this.userRegistrationService)
+                .deleteUser(EMAIL_ID);
+		ResponseEntity<Void>responseEntity= this.userRegistrationController.deleteUser(EMAIL_ID);
+		ResponseEntity<Void>responseEntityMetaData= this.UserMetaDataController.deleteUserMetaData(EMAIL_ID);
+
+        
+        assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.NO_CONTENT, responseEntityMetaData.getStatusCode());
+
+        
+      //  assertEquals(this.userPersonalDetails, responseEntity.getBody().getUserPersonalDetails());
+        
+    }
+
+   /* @Test
+    public void testUpdateUserPersonalDetails() {
+        Mockito.doReturn(this.userPersonalDetails)
+                .when(this.defaultUserRegistrationService)
+                .updateUserPersonalDetails(this.userPersonalDetails);
 
         ResponseEntity<User> responseEntity =
-                this.userController.updateUser(EMAIL_ID, user);
+                this.userRegistrationController.updateUserPersonalDetails(EMAIL_ID, userPersonalDetails);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(FIRST_NAME, responseEntity.getBody().getFirstName());
@@ -111,23 +165,22 @@ public class UserControllerTest {
     @Test(expected = MismatchIdentifierException.class)
     public void testUpdateUserException() {
         Mockito.doReturn(MISMATCH_EMAIL_ID)
-                .when(this.user)
+                .when(this.userPersonalDetails)
                 .getEmailId();
 
-        this.userController.updateUser(EMAIL_ID, user);
+        this.userRegistrationController.updateUserPersonalDetails(EMAIL_ID, userPersonalDetails);
     }
 
     @Test
-    public void testDeleteUser() {
+    public void testDeleteUserPersonalDetails() {
         Mockito.doNothing()
-                .when(this.userService)
-                .deleteUser(EMAIL_ID);
+                .when(this.defaultUserRegistrationService)
+                .deleteUserPersonalDetails(EMAIL_ID);
 
         ResponseEntity<Void> responseEntity =
-                this.userController.deleteUser(EMAIL_ID);
+                this.userRegistrationController.deleteUser(EMAIL_ID);
 
         assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
-    }
+    }*/
 
 }
-*/

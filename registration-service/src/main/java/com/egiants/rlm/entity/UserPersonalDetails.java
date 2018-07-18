@@ -1,30 +1,37 @@
 package com.egiants.rlm.entity;
 
-import java.time.LocalDate;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 
 public class UserPersonalDetails {
 
     // TODO: need to add external and entity model objects to isolate this
-    // attributes
-    
-	
-	
-	@NotNull(message = "firstName Can't be Null")
+
+    //TODO: need to add size constrain
+    @NotNull(message = "firstName Can't be Null")
     private String firstName;
+    @NotNull(message = "middleName Can't be Null")
     private String middleName;
+    @NotNull(message = "lastName Can't be Null")
     private String lastName;
+    @NotNull(message = "gender Should be Enum type MALE or FEMALE")
     private Gender gender;
-    private LocalDate dateOfBirth;
+    @NotNull(message = "dateOfBirth Can't be Null")
+    private String dateOfBirth;
+    @NotNull(message = "nationality Can't be Null")
     private String nationality;
+    @NotNull(message = "ssn Can't be Null")
     private Integer ssn;
+    @NotNull(message = "maritalStatus Should be Enum type SINGLE or MARRIED")
     private MaritalStatus maritalStatus;
-    private Address currentAddress;
-    private Address nativeAddress;
+    @Valid
+    private Address primaryAddress;
+    @Valid
+    private Address secondaryAddress;
     private Integer workPhoneNo;
+    @NotNull(message = "personalPhoneNo Can't be Null")
     private Integer personalPhoneNo;
+    @NotNull(message = "emailId Can't be Null")
     private String emailId;
     // drivers license or state Id
     // Bank statement
@@ -36,14 +43,15 @@ public class UserPersonalDetails {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    
-	public String getMiddleName() {
+
+    public String getMiddleName() {
         return middleName;
     }
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
+
     public String getLastName() {
         return lastName;
     }
@@ -51,6 +59,7 @@ public class UserPersonalDetails {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public Gender getGender() {
         return gender;
     }
@@ -58,13 +67,10 @@ public class UserPersonalDetails {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+    public String getDateOfBirth() { return this.dateOfBirth; }
+
+    public void setDateOfBirth(String dateOfBirth) { this.dateOfBirth = dateOfBirth; }
 
     public String getNationality() {
         return nationality;
@@ -90,21 +96,14 @@ public class UserPersonalDetails {
         this.maritalStatus = maritalStatus;
     }
 
-    public Address getCurrentAddress() {
-        return currentAddress;
-    }
+    public Address getPrimaryAddress() { return this.primaryAddress; }
 
-    public void setCurrentAddress(Address currentAddress) {
-        this.currentAddress = currentAddress;
-    }
-    public Address getNativeAddress() {
-        return nativeAddress;
-    }
+    public void setPrimaryAddress(Address primaryAddress) { this.primaryAddress = primaryAddress; }
 
-    public void setNativeAddress(Address nativeAddress) {
-        this.nativeAddress = nativeAddress;
-    }
-	@DynamoDBAttribute(attributeName = "WorkPhoneNo")
+    public Address getSecondaryAddress() { return this.secondaryAddress; }
+
+    public void setSecondaryAddress(Address secondaryAddress) { this.secondaryAddress = secondaryAddress; }
+
     public Integer getWorkPhoneNo() {
         return workPhoneNo;
     }
@@ -128,7 +127,5 @@ public class UserPersonalDetails {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-
-	
 
 }

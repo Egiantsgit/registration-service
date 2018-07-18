@@ -8,6 +8,6 @@ import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
 import java.util.UUID;
 
 @EnableScan
-public interface UserRepo extends DynamoDBCrudRepository<User, UUID> {
+public interface UserRepo extends DynamoDBCrudRepository<User, String> {
 
 }

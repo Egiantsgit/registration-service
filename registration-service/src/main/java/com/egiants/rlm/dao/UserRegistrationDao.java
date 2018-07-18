@@ -10,11 +10,14 @@ public interface UserRegistrationDao {
 
     List<User> getUsers();
 
-    User getUser(UUID uuid);
+//    User getUser(UUID uuid);
 
-    User createUser(User user);
+    User getUser(String EMAIL_ID);
 
-    User updateUser(User user);
 
-    void deleteUser(UUID uuid);
+    User createUser(String EMAIL_ID,User user);
+
+    User updateUser(String EMAIL_ID,User user);
+
+    void deleteUser(String EMAIL_ID);
 }

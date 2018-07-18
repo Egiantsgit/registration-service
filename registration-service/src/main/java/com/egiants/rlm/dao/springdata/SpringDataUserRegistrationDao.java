@@ -28,14 +28,18 @@ public class SpringDataUserRegistrationDao implements UserRegistrationDao {
     }
 
     @Override
-    public User getUser(UUID uuid) {
+//    public User getUser(UUID uuid) {
+//        // TODO: add Resource not found exception if user is null
+//        return this.userRepo.findOne(uuid);
+    
+    public User getUser(String EMAIL_ID) {
         // TODO: add Resource not found exception if user is null
-        return this.userRepo.findOne(uuid);
+        return this.userRepo.findOne(EMAIL_ID);
 
     }
 
     @Override
-    public User createUser(User user) {
+    public User createUser(String EMAIL_ID,User user) {
 
         ZonedDateTime newDate = ZonedDateTime.now(ZoneId.systemDefault());
 
@@ -46,16 +50,16 @@ public class SpringDataUserRegistrationDao implements UserRegistrationDao {
     }
 
     @Override
-    public User updateUser(User user) {
+    public User updateUser(String EMAIL_ID,User user) {
 
         return this.userRepo.save(user);//customUpdate(user);
 
     }
 
     @Override
-    public void deleteUser(UUID uuid) {
+    public void deleteUser(String EMAIL_ID) {
 
-        this.userRepo.delete(uuid);
+        this.userRepo.delete(EMAIL_ID);
     }
 
     /*public User customUpdate(User user) {

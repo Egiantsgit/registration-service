@@ -1,98 +1,106 @@
 package com.egiants.rlm.entity;
 
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
 
 public class UserImmigrationDetails {
-	
-	
-	private String countryOfBirth;
-	private String passportIssuedCountry;
-	private String currentStatus;
-	private LocalDate optStartDate;
-	private LocalDate h1StartDate;
-	private LocalDate passportExpDate;
-	private String i94Number;
-	private String currentStatusValidity;
-	private LocalDate optEndDate;
-	private LocalDate h1EndDate;
-	
-	public String getCountryOfBirth() {
-		return countryOfBirth;
-	}
 
-	public void setCountryOfBirth(String countryOfBirth) {
-		this.countryOfBirth = countryOfBirth;
-	}
+    @NotNull(message = "countryOfBirth Can't be Null")
+    private String countryOfBirth;
+    @NotNull(message = "passportExpiryDate Can't be Null")
+    private String passportExpiryDate;
+    @NotNull(message = "passportIssuedCountry Can't be Null")
+    private String passportIssuedCountry;
+    @NotNull(message = "i94Number Can't be Null")
+    private Integer i94Number;
+    //TODO: may be this should be enum
+    @NotNull(message = "currentStatus Can't be Null")
+    private String currentStatus;
+    @NotNull(message = "currentStatusValidity Can't be Null")
+    private String currentStatusValidity;
+    //TODO: ideally this start and end date should auto populate based on status
+    //TODO: not sure this date fields can be strings
+    private String optStartDate;
+    private String optEndDate;
+    private String h1bStartDate;
+    private String h1bEndDate;
 
-	public String getPassportIssuedCountry() {
-		return passportIssuedCountry;
-	}
+    public String getCountryOfBirth() {
+        return countryOfBirth;
+    }
 
-	public void setPassportIssuedCountry(String passportIssuedCountry) {
-		this.passportIssuedCountry = passportIssuedCountry;
-	}
+    public void setCountryOfBirth(String countryOfBirth) {
+        this.countryOfBirth = countryOfBirth;
+    }
 
-	public String getCurrentStatus() {
-		return currentStatus;
-	}
+    public String getPassportExpiryDate() {
+        return passportExpiryDate;
+    }
 
-	public void setCurrentStatus(String currentStatus) {
-		this.currentStatus = currentStatus;
-	}
-	public  LocalDate getOptStartDate() {
-		return optStartDate;
-	}
+    public void setPassportExpiryDate(String passportExpiryDate) {
+        this.passportExpiryDate = passportExpiryDate;
+    }
 
-	public void setOptStartDate( LocalDate optStartDate) {
-		this.optStartDate = optStartDate;
-	}
+    public String getPassportIssuedCountry() {
+        return passportIssuedCountry;
+    }
 
-	public  LocalDate getH1StartDate() {
-		return h1StartDate;
-	}
+    public void setPassportIssuedCountry(String passportIssuedCountry) {
+        this.passportIssuedCountry = passportIssuedCountry;
+    }
 
-	public void setH1StartDate( LocalDate h1StartDate) {
-		this.h1StartDate = h1StartDate;
-	}
+    public Integer getI94Number() {
+        return i94Number;
+    }
 
-	public  LocalDate getPassportExpDate() {
-		return passportExpDate;
-	}
+    public void setI94Number(Integer i94Number) {
+        this.i94Number = i94Number;
+    }
 
-	public void setPassportExpDate( LocalDate passportExpDate) {
-		this.passportExpDate = passportExpDate;
-	}
+    public String getCurrentStatus() {
+        return currentStatus;
+    }
 
-	public String getI94Number() {
-		return i94Number;
-	}
+    public void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
+    }
 
-	public void setI94Number(String i94Number) {
-		this.i94Number = i94Number;
-	}
+    public String getCurrentStatusValidity() {
+        return currentStatusValidity;
+    }
 
-	public String getCurrentStatusValidity() {
-		return currentStatusValidity;
-	}
+    public void setCurrentStatusValidity(String currentStatusValidity) {
+        this.currentStatusValidity = currentStatusValidity;
+    }
 
-	public void setCurrentStatusValidity(String currentStatusValidity) {
-		this.currentStatusValidity = currentStatusValidity;
-	}
+    public String getOptStartDate() {
+        return optStartDate;
+    }
 
-	public  LocalDate getOptEndDate() {
-		return optEndDate;
-	}
+    public void setOptStartDate(String optStartDate) {
+        this.optStartDate = optStartDate;
+    }
 
-	public void setOptEndDate( LocalDate optEndDate) {
-		this.optEndDate = optEndDate;
-	}
+    public String getOptEndDate() {
+        return optEndDate;
+    }
 
-	public  LocalDate getH1EndDate() {
-		return h1EndDate;
-	}
+    public void setOptEndDate(String optEndDate) {
+        this.optEndDate = optEndDate;
+    }
 
-	public void setH1EndDate( LocalDate h1EndDate) {
-		this.h1EndDate = h1EndDate;
-	}
-	
+    public String getH1bStartDate() {
+        return h1bStartDate;
+    }
+
+    public void setH1bStartDate(String h1bStartDate) {
+        this.h1bStartDate = h1bStartDate;
+    }
+
+    public String getH1bEndDate() {
+        return h1bEndDate;
+    }
+
+    public void setH1bEndDate(String h1bEndDate) {
+        this.h1bEndDate = h1bEndDate;
+    }
 }

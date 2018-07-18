@@ -1,14 +1,18 @@
 package com.egiants.rlm.service.impl;
 
+import com.egiants.rlm.Exceptions.ResourceNotFoundException;
+import com.egiants.rlm.Exceptions.UserMetaDataException;
 import com.egiants.rlm.dao.UserRegistrationDao;
 import com.egiants.rlm.entity.User;
 import com.egiants.rlm.entity.UserMetaData;
 import com.egiants.rlm.service.UserMetaDataService;
 import com.egiants.rlm.service.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class DefaultUserRegistrationService implements UserRegistrationService {
@@ -29,34 +33,46 @@ public class DefaultUserRegistrationService implements UserRegistrationService {
 
         UserMetaData userMetaData = this.userMetaDataService.getUserMetaData(emailId);
         if (userMetaData == null) {
-            //TODO: throw Exception saying there admin need to register before registration process
+            throw new UserMetaDataException(emailId);
         }
-        return this.userRegistrationDao.getUser(userMetaData.getUuid());
+        User user = this.userRegistrationDao.getUser(userMetaData.getEmailId());
+        if(user ==null) {
+            throw new ResourceNotFoundException(emailId);
+        }
+        return user;
     }
 
     @Override
-    public User createUser(User user) {
-        //TODO: we need to pass emailId as pathParam from controller
-        UserMetaData userMetaData = this.userMetaDataService.getUserMetaData(user.getUserPersonalDetails().getEmailId());
-        if(userMetaData == null) {
-            //TODO: throw Exception saying there admin need to register before registration process
+    public User createUser(String emailId, User user) {
+        UserMetaData userMetaData = this.userMetaDataService.getUserMetaData(emailId);
+        if (userMetaData == null) {
+            throw new UserMetaDataException(emailId);
         }
         user.setUuid(userMetaData.getUuid());
-        return this.userRegistrationDao.createUser(user);
+
+        return this.userRegistrationDao.createUser(emailId,user);
     }
 
     @Override
-    public User updateUser(User user) {
-        return this.userRegistrationDao.updateUser(user);
+    public User updateUser(String emailId, User user) {
+        UserMetaData userMetaData = this.userMetaDataService.getUserMetaData(emailId);
+        if (userMetaData == null) {
+            throw new UserMetaDataException(emailId);
+        }
+        user.setUuid(userMetaData.getUuid());
+
+        return this.userRegistrationDao.updateUser(emailId,user);
     }
 
     @Override
     public void deleteUser(String emailId) {
         UserMetaData userMetaData = this.userMetaDataService.getUserMetaData(emailId);
         try {
-            this.userRegistrationDao.deleteUser(userMetaData.getUuid());
-        } catch (Exception e) {
-            //TODO: no need worry for exception saying no record
+            this.userRegistrationDao.deleteUser(userMetaData.getEmailId());
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(emailId);
         }
     }
+
+
 }

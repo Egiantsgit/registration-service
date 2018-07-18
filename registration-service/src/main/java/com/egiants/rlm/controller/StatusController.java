@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class StatusController {
-	
-	@RequestMapping(value = "/ping", method = RequestMethod.GET)
-	public ResponseEntity<String> ping() {
-		return new ResponseEntity<>("pong", HttpStatus.OK);
-	}
+
+    @RequestMapping(value = "/ping", method = RequestMethod.GET)
+    public ResponseEntity<String> ping() {
+        return new ResponseEntity<>("pong", HttpStatus.OK);
+    }
 
 }

@@ -1,64 +1,52 @@
 package com.egiants.rlm.entity;
 
- public class Address {
-	 
-	public String line1;
-	public String line2;
-	public String city;
-	public String state;
-	public String postalcode;
+import javax.validation.constraints.NotNull;
 
-	public Address() {
-		super();
-	}
+public class Address {
 
-	public Address(String line1, String line2, String city, String state, String postalcode) {
-		super();
-		this.line1 = line1;
-		this.line2 = line2;
-		this.city = city;
-		this.state = state;
-		this.postalcode = postalcode;
-	}
+    @NotNull(message = "line1 Can't be Null")
+    private String line1;
+    @NotNull(message = "line2 Can't be Null")
+    private String line2;
+    private String line3;
+    @NotNull(message = "city Can't be Null")
+    private String city;
+    @NotNull(message = "state Can't be Null")
+    private String state;
+    @NotNull(message = "postalCode Can't be Null")
+    private String postalCode;
+    private Integer phoneNo;
+    private Integer alternatePhoneNo;
 
-	public String getLine1() {
-		return line1;
-	}
+    public String getLine1() { return this.line1; }
 
-	public void setLine1(String line1) {
-		this.line1 = line1;
-	}
+    public void setLine1(String line1) { this.line1 = line1; }
 
-	public String getLine2() {
-		return line2;
-	}
+    public String getLine2() { return this.line2; }
 
-	public void setLine2(String line2) {
-		this.line2 = line2;
-	}
+    public void setLine2(String line2) { this.line2 = line2; }
 
-	public String getCity() {
-		return city;
-	}
+    public String getLine3() { return this.line3; }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void setLine3(String line3) { this.line3 = line3; }
 
-	public String getState() {
-		return state;
-	}
+    public String getCity() { return this.city; }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setCity(String city) { this.city = city; }
 
-	public String getPostalcode() {
-		return postalcode;
-	}
+    public String getState() { return this.state; }
 
-	public void setPostalcode(String postalcode) {
-		this.postalcode = postalcode;
-	}
+    public void setState(String state) { this.state = state; }
 
+    public String getPostalCode() { return postalCode; }
+
+    public void setPostalCode(String postalCode) { this.postalCode = postalCode;  }
+
+    public Integer getPhoneNo() { return this.phoneNo; }
+
+    public void setPhoneNo(Integer phoneNo) { this.phoneNo = phoneNo; }
+
+    public Integer getAlternatePhoneNo() { return this.alternatePhoneNo; }
+
+    public void setAlternatePhoneNo(Integer alternatePhoneNo) { this.alternatePhoneNo = alternatePhoneNo; }
 }

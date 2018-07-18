@@ -1,0 +1,5 @@
+package com.egiants.rlm.controller;
+
+public class UserMetaDataControllerTest {
+
+}
