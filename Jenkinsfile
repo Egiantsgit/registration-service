@@ -10,7 +10,7 @@ pipeline{
         
         stage("Set Permission"){
             steps{
-                bash "chown ubuntu: ."
+                sh "chown ubuntu: ."
             }
         }
         
