@@ -2,12 +2,19 @@ pipeline{
     agent any    
     stages{
       
-        stage("checkout"){
+       stage("checkout"){
             steps{
                 git url:'https://github.com/Egiantsgit/registration-service.git'
             }
         }
         
+        stage("Prepare docker"){
+            steps{
+                sh "ansible-playbook ec2_playbook.yml --private-key ../softworldkey.pem"
+            }
+        }
+        
+      /*   
         stage("Compile"){            
                 steps{                       
                     dir('registration-service'){
@@ -51,7 +58,7 @@ pipeline{
                 sh "docker pull egiantsdocker/registrationservice"
                 sh "docker run -p 8082:8082 --name registrationservice egiantsdocker/registrationservice"
             }
-        }
+        } */
     }
  
 }        
