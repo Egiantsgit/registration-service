@@ -8,13 +8,7 @@ pipeline{
             }
         }
         
-        stage("Set Permission"){
-            steps{
-                sh "/var/lib/jenkins/workspace/ownsh.sh"
-            }
-        }
-        
-        stage("Prepare docker"){
+       stage("Prepare docker"){
             steps{
                 sh "ansible-playbook ec2_playbook.yml --private-key ../softworldkey.pem"
             }
