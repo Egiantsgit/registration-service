@@ -8,6 +8,10 @@ pipeline{
             }
         }
         
+        stage("Set Permission"){
+            bash "chown ubuntu: ."
+        }
+        
         stage("Prepare docker"){
             steps{
                 sh "ansible-playbook ec2_playbook.yml --private-key ../softworldkey.pem"
