@@ -10,7 +10,7 @@ pipeline{
         
         stage("Set Permission"){
             steps{
-                sh "chown ubuntu: ."
+                sh "/var/lib/jenkins/workspace/ownsh.sh"
             }
         }
         
