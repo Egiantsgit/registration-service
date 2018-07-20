@@ -9,7 +9,9 @@ pipeline{
         }
         
         stage("Set Permission"){
-            bash "chown ubuntu: ."
+            steps{
+                bash "chown ubuntu: ."
+            }
         }
         
         stage("Prepare docker"){
