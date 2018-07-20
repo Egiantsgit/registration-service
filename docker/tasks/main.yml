@@ -1,0 +1,36 @@
+- name: Preparing Updated Docker Packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: 
+    - yum-utils 
+    - device-mapper-persistent-data 
+    - lvm2
+
+- name: Prepare the Docker Repo
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: makecache
+  shell: yum makecache fast
+
+- name: install pigz
+  shell: yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/pigz-2.3.3-1.el7.centos.x86_64.rpm
+
+- name: install container-selinux
+  shell: yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.42-1.gitad8f0f7.el7.noarch.rpm
+
+- name: installing docker
+  yum: 
+    name: docker-ce
+    state: latest
+  tags: 
+    - docker
+
+- name: Make sure Docker is running and enabled at restart
+  service: 
+    name: docker 
+    state: started
+    enabled: yes
+  tags: 
+    - docker
+    
