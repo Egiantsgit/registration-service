@@ -8,14 +8,8 @@ pipeline{
             }
         }
         
-       stage("Prepare docker"){
-            steps{
-                sh "chmod u+x ./inventory/ec2.py"
-                sh "ansible-playbook ec2_playbook.yml --private-key ../softworldkey.pem"
-            }
-        }
         
-      /*   
+      
         stage("Compile"){            
                 steps{                       
                     dir('registration-service'){
@@ -54,12 +48,20 @@ pipeline{
                 }
         }
         
+      stage("Prepare Staging Server"){
+            steps{
+                sh "chmod u+x ./inventory/ec2.py"
+                sh "ansible-playbook ec2_playbook.yml --private-key ../softworldkey.pem"
+            }
+        }
+
+        
         stage("Deploy"){
             steps{
                 sh "docker pull egiantsdocker/registrationservice"
                 sh "docker run -p 8082:8082 --name registrationservice egiantsdocker/registrationservice"
             }
-        } */
+        } 
     }
  
 }        
