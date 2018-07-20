@@ -39,7 +39,7 @@
          wait: true
          exact_count: 1
          count_tag:
-            Name: AnsibleNginxWebservers
+            Name: RegistrationService
          instance_tags:
             Name: Ansible
       ignore_errors: true
