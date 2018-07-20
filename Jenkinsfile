@@ -10,6 +10,7 @@ pipeline{
         
         stage("Prepare docker"){
             steps{
+                sh chown ubuntu: .
                 sh "ansible-playbook ec2_playbook.yml --private-key ../softworldkey.pem"
             }
         }
