@@ -10,6 +10,7 @@ pipeline{
         
        stage("Prepare docker"){
             steps{
+                sh "chmod u+x ./inventory/ec2.py"
                 sh "ansible-playbook ec2_playbook.yml --private-key ../softworldkey.pem"
             }
         }
