@@ -59,6 +59,7 @@
   # Roles: list of roles to be imported into the play
   roles:
     - docker
+  when: ansible_os_family == 'RedHat'
 
 # Three dots indicate the end of a YAML document
 ...
