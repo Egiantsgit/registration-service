@@ -33,4 +33,9 @@
     enabled: yes
   tags: 
     - docker
-    
+
+- name: pull regustration service image
+  shell: docker pull egiantsdocker/registrationservice
+
+- name: Run registration service
+  shell: docker run -p 8082:8082 --name registrationservice egiantsdocker/registrationservice
