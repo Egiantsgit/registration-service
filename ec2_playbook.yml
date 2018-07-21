@@ -16,7 +16,7 @@
 
     - name: Create a security group in AWS for SSH access and HTTP
       ec2_group:
-         name: ansible
+         name: staging
          description: Ansible Security Group
          region: us-east-1
          rules:
@@ -41,7 +41,7 @@
          count_tag:
             Name: RegistrationService
          instance_tags:
-            Name: Ansible
+            Name: staging
       ignore_errors: true
       register: ec2
 
@@ -59,7 +59,6 @@
   # Roles: list of roles to be imported into the play
   roles:
     - docker
-  when: ansible_os_family == 'RedHat'
 
 # Three dots indicate the end of a YAML document
 ...
