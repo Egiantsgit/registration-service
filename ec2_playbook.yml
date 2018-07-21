@@ -44,6 +44,10 @@
             Name: staging
       ignore_errors: true
       register: ec2
+      
+    - name: waiting
+      pause: minutes=6
+  
 
     - name: Refresh inventory to ensure new instances exist in inventory
       meta: refresh_inventory
