@@ -33,33 +33,23 @@
               to_port: 8082
               cidr_ip: 0.0.0.0/0
 
-    - name: Provision a set of instances
-      ec2:
-         key_name: softworldkey
-         group: ansible
-         instance_type: t2.micro
-         image:  ami-6871a115
-         region: us-east-1         
-         wait: true
-         exact_count: 1
-         count_tag:
-            Name: staging
-         instance_tags:
-            Name: staging
-      ignore_errors: true
-      register: ec2
+#    - name: Provision a set of instances
+#      ec2:
+#         key_name: softworldkey
+#         group: ansible
+#         instance_type: t2.micro
+#         image:  ami-6871a115
+#         region: us-east-1         
+#         wait: true
+#         exact_count: 1
+#         count_tag:
+#            Name: staging
+#         instance_tags:
+#            Name: staging
+#      ignore_errors: true
+#      register: ec2
       
-    - name: waiting
-      pause: minutes=6
-  
-
-    - name: Refresh inventory to ensure new instances exist in inventory
-      meta: refresh_inventory
-
-  # Task: the list of tasks that will be executed within the play, this section
-  # can also be used for pre and post tasks
-      
-    - pause:
+      - pause:
           prompt: "Verify service availability and continue to terminate"
 
     - name: Remove tagged EC2 instances from security group by setting an empty group
@@ -80,6 +70,18 @@
           wait: true
           delegate_to: localhost
 
+      
+#    - name: waiting
+#      pause: minutes=6
+  
+
+    - name: Refresh inventory to ensure new instances exist in inventory
+      meta: refresh_inventory
+
+  # Task: the list of tasks that will be executed within the play, this section
+  # can also be used for pre and post tasks
+      
+    
 -
 
   # Target: where our play will run and options it will run with
