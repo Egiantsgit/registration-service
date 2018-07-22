@@ -43,7 +43,7 @@
          wait: true
          exact_count: 1
          count_tag:
-            Name: RegistrationService
+            Name: staging
          instance_tags:
             Name: staging
       ignore_errors: true
