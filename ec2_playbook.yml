@@ -71,7 +71,7 @@
       
     - name: Terminate EC2 instances
       ec2:
-          state: restarted
+          state: absent
           region: us-east-1          
           instance_type: t2.micro
           instance_ids: i-0e36afea7ca2db6a2
