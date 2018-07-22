@@ -28,7 +28,7 @@
               from_port: 22
               to_port: 22
               cidr_ip: 0.0.0.0/0
-            - proto: custom tcp
+            - proto: http
               from_port: 8082
               to_port: 8082
               cidr_ip: 0.0.0.0/0
