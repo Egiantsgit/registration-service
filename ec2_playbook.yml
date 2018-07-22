@@ -41,7 +41,6 @@
          image:  ami-6871a115
          region: us-east-1
          state:present
-         assign_public_ip: yes
          wait: true
          exact_count: 1
          count_tag:
