@@ -58,7 +58,6 @@
           group_id: ""
           instance_tags:
             Name: staging
-          delegate_to: localhost
       
     - name: Terminate EC2 instances
       ec2:
@@ -66,8 +65,6 @@
           region: us-east-1
           intance_ids: t2.micro
           wait: true
-          delegate_to: localhost
-
       
 #    - name: waiting
 #      pause: minutes=6
