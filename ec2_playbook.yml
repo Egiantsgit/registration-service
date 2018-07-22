@@ -50,7 +50,16 @@
       register: ec2
       
       
-    - name: Remove tagged EC2 instances from security group by setting an empty group
+    
+      
+#    - name: waiting
+#      pause: minutes=6
+  
+
+    - name: Refresh inventory to ensure new instances exist in inventory
+      meta: refresh_inventory
+      
+      - name: Remove tagged EC2 instances from security group by setting an empty group
       ec2:
           state: running
           region: us-east-1
@@ -69,13 +78,6 @@
           instance_tags: 
               Name: staging
           wait: true
-      
-#    - name: waiting
-#      pause: minutes=6
-  
-
-    - name: Refresh inventory to ensure new instances exist in inventory
-      meta: refresh_inventory
 
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
