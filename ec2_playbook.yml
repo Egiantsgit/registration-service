@@ -63,7 +63,7 @@
       ec2:
           state: absent
           region: us-east-1
-          intance_ids: t2.micro
+          intance_type: t2.micro
           wait: true
       
 #    - name: waiting
