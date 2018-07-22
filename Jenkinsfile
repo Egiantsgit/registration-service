@@ -45,16 +45,16 @@ pipeline{
                     }
                 }
         }   
-     /*   
+     
       stage("Prepare Staging Server"){
             steps{
                 sh "chmod u+x ./inventory/ec2.py"
                 sh "ansible-playbook ec2_playbook.yml --private-key ../softworldkey.pem"
             }
         }
-      */
+     
 
-       /* 
+       
         stage("Deploy"){
             steps{
                 sh "docker pull egiantsdocker/registrationservice"
@@ -62,7 +62,7 @@ pipeline{
             }
         }
         
-        */
+        
     }
  
 }        
