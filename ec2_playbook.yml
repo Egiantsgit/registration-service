@@ -59,7 +59,7 @@
     - name: Refresh inventory to ensure new instances exist in inventory
       meta: refresh_inventory
       
-      - name: Remove tagged EC2 instances from security group by setting an empty group
+    - name: Remove tagged EC2 instances from security group by setting an empty group
       ec2:
           state: running
           region: us-east-1
