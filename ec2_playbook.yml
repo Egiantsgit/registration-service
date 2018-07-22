@@ -61,7 +61,7 @@
       
     - name: Terminate EC2 instances
       ec2:
-          state: restart
+          state: restarted
           region: us-east-1          
           instance_type: t2.micro
           instance_ids: '{{ ec2.instance_ids }}'
