@@ -56,6 +56,7 @@
           region: us-east-1
           instance_type: t2.micro
           group_id: ""
+          instance_ids: '{{ ec2.instance_ids }}'
           instance_tags:
             Name: staging
       
