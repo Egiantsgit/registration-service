@@ -49,9 +49,7 @@
 #      ignore_errors: true
 #      register: ec2
       
-      - pause:
-          prompt: "Verify service availability and continue to terminate"
-
+      
     - name: Remove tagged EC2 instances from security group by setting an empty group
       ec2:
           state: running
