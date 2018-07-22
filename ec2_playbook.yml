@@ -61,10 +61,12 @@
       
     - name: Terminate EC2 instances
       ec2:
-          state: absent
+          state: restart
           region: us-east-1          
           instance_type: t2.micro
-          instance_ids: staging
+          instance_ids: '{{ ec2.instance_ids }}'
+          instance_tags: 
+              Name: staging
           wait: true
       
 #    - name: waiting
