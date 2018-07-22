@@ -62,7 +62,6 @@
     - name: Terminate EC2 instances
       ec2:
           state: absent
-          hosts: tag_staging
           region: us-east-1          
           instance_type: t2.micro
           instance_ids: staging
