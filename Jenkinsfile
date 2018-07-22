@@ -8,7 +8,7 @@ pipeline{
             }
         }
      
-       stage("Compile"){            
+  /*     stage("Compile"){            
                 steps{                       
                     dir('registration-service'){
                         sh "sh ./mvnw compile"  
@@ -45,7 +45,7 @@ pipeline{
                     }
                 }
         }   
-     
+    */ 
       stage("Prepare Staging Server"){
             steps{
                 sh "chmod u+x ./inventory/ec2.py"
