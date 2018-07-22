@@ -65,7 +65,7 @@
           region: us-east-1
           instance_type: t2.micro
           group_id: ""
-          instance_ids: i-0e36afea7ca2db6a2
+          instance_ids: '{{ instance_ids }}'
           instance_tags:
             Name: staging
       
@@ -74,7 +74,7 @@
           state: absent
           region: us-east-1          
           instance_type: t2.micro
-          instance_ids: i-0e36afea7ca2db6a2
+          instance_ids: '{{ instance_ids }}'
           instance_tags: 
               Name: staging
           wait: true
