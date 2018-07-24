@@ -47,10 +47,7 @@
          instance_tags:
             Name: staging
       ignore_errors: true
-      register: ec2
-      
-      
-    
+      register: ec2    
       
 #    - name: waiting
 #      pause: minutes=6
@@ -65,7 +62,7 @@
           region: us-east-1
           instance_type: t2.micro
           group_id: ""
-          instance_ids: '{{ instance_ids }}'
+          instance_ids: "{{ ec2_id }}"
           instance_tags:
             Name: staging
       
@@ -74,14 +71,13 @@
           state: absent
           region: us-east-1          
           instance_type: t2.micro
-          instance_ids: '{{ instance_ids }}'
+          instance_ids: "{{ ec2_id }}"
           instance_tags: 
               Name: staging
           wait: true
 
   # Task: the list of tasks that will be executed within the play, this section
-  # can also be used for pre and post tasks
-      
+  # can also be used for pre and post tasks     
     
 -
 
